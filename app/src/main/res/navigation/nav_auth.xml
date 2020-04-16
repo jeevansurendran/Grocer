@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_auth"
+    app:startDestination="@id/auth_phone_fragment">
+
+    <fragment
+        android:id="@+id/auth_phone_fragment"
+        android:name="com.silverpants.grocer.auth.fragments.AuthPhoneFragment"
+        android:label="@string/auth_phone_phone_label"
+        tools:layout="@layout/fragment_auth_phone">
+
+        <action
+            android:id="@+id/verify_otp"
+            app:destination="@id/auth_otp_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/auth_otp_fragment"
+        android:name="com.silverpants.grocer.auth.fragments.AuthOtpFragment"
+        android:label="@string/auth_phone_phone_label"
+        tools:layout="@layout/fragment_auth_otp" >
+        <argument
+            android:name="number"
+            app:argType="string" />
+    </fragment>
+</navigation>

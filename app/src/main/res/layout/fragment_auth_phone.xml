@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".auth.fragments.AuthPhoneFragment">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_auth_phone_phone"
+        style="@style/GreenInputLayoutStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_extra_large"
+        android:layout_marginEnd="@dimen/spacing_extra_large"
+        app:errorEnabled="true"
+        android:hint="@string/number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLength="13"
+            android:inputType="phone"
+            android:text="@string/country_code_prefix"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_auth_phone_terms_and_conditions"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/terms_and_condition"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/til_auth_phone_phone"
+        app:layout_constraintStart_toStartOf="@id/til_auth_phone_phone"
+        app:layout_constraintTop_toBottomOf="@id/til_auth_phone_phone"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <TextView
+        android:id="@+id/tv_auth_phone_bye_bye"
+        style="@style/HeadingExtraHugeTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/raleway"
+        android:text="@string/bye_bye"
+        app:layout_constraintBottom_toTopOf="@id/til_auth_phone_phone"
+        app:layout_constraintStart_toStartOf="@id/til_auth_phone_phone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <TextView
+        style="@style/HeadingTextStyle"
+        android:id="@+id/tv_auth_phone_long_lines"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/long_lines"
+        app:layout_constraintStart_toStartOf="@id/tv_auth_phone_bye_bye"
+        app:layout_constraintTop_toBottomOf="@id/tv_auth_phone_bye_bye" />
+
+    <Button
+        android:id="@+id/btn_auth_phone_proceed"
+        style="@style/CircularButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:text="@string/proceed"
+        app:layout_constraintEnd_toEndOf="@id/tv_auth_phone_terms_and_conditions"
+        app:layout_constraintStart_toStartOf="@id/tv_auth_phone_terms_and_conditions"
+        app:layout_constraintTop_toBottomOf="@id/tv_auth_phone_terms_and_conditions" />
+</androidx.constraintlayout.widget.ConstraintLayout>

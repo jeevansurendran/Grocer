@@ -8,5 +8,4 @@ import retrofit2.http.POST
 interface WebApiService {
     @POST("users/resister")
     fun register(userCredentials: ObjectNode) : Call<UserModel>
-    
 }

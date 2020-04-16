@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply from: '../versions.gradle'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
     compileSdkVersion 29
@@ -33,9 +35,6 @@ android {
         jvmTarget = "1.8"
     }
 
-// To inline the bytecode built with JVM target 1.8 into
-// bytecode that is being built with JVM target 1.6. (e.g. navArgs)
-
 }
 
 dependencies {
@@ -47,26 +46,25 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
+    implementation "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$versions.navigation"
 
     // Network libraries and JSON <-> POJO
     implementation(
             // Jackson
-    [group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.6'],
-    [group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version:'2.9.6'],
-    [group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.6'],
-    [group: 'com.fasterxml.jackson.module', name: 'jackson-module-kotlin', version: '2.9.6'],
+            [group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: versions.jackson],
+            [group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: versions.jackson],
+            [group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: versions.jackson],
+            [group: 'com.fasterxml.jackson.module', name: 'jackson-module-kotlin', version: versions.jackson],
 
-    // Retrofit + okhttp3
-    [group: 'com.squareup.retrofit2', name: 'retrofit', version: '2.6.4'],
-    [group: 'com.squareup.retrofit2', name: 'converter-jackson', version:'2.6.4']
+            // Retrofit + okhttp3
+            [group: 'com.squareup.retrofit2', name: 'retrofit', version: versions.retrofit],
+            [group: 'com.squareup.retrofit2', name: 'converter-jackson', version: versions.retrofit]
     )
 
-    def room_version = "2.2.5"
-    implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
-    implementation "androidx.room:room-ktx:$room_version"
+    implementation "androidx.room:room-runtime:$versions.room"
+    annotationProcessor "androidx.room:room-compiler:$versions.room"
+    implementation "androidx.room:room-ktx:$versions.room"
 
 
     testImplementation 'junit:junit:4.12'

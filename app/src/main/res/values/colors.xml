@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
+
+    //colors for the app
+    <color name="colorPrimary">#75DDA0</color>
+    <color name="colorPrimaryDark">#71CD97</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="colorError">#FF6868</color>
 </resources>
