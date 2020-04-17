@@ -37,7 +37,7 @@ class AuthPhoneFragment : Fragment() {
             if(!tilPhoneField.error.isNullOrEmpty()) tilPhoneField.error= null
         }
 
-        view.btn_auth_phone_proceed.setOnClickListener {
+        view.btn_auth_phone_verify.setOnClickListener {
             if(!validatePhoneNumber()) {
                 return@setOnClickListener
             }

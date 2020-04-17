@@ -18,4 +18,7 @@ class AuthDetailsFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_auth_details, container, false)
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    }
 }

@@ -1,14 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".auth.fragments.AuthDetailsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_auth_details_name"
+        style="@style/GreenInputLayoutStyle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_extra_large"
+        android:layout_marginEnd="@dimen/spacing_extra_large"
+        android:hint="@string/name"
+        app:errorEnabled="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6">
 
-</FrameLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_auth_details_name"
+        style="@style/HeadingExtraHugeTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/raleway"
+        android:text="@string/bye_bye"
+        app:layout_constraintBottom_toTopOf="@id/til_auth_details_name"
+        app:layout_constraintStart_toStartOf="@id/til_auth_details_name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <TextView
+        style="@style/HeadingTextStyle"
+        android:id="@+id/tv_auth_details_steps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/long_lines"
+        app:layout_constraintStart_toStartOf="@id/tv_auth_details_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_auth_details_name" />
+
+    <Button
+        android:id="@+id/btn_auth_details_verify"
+        style="@style/CircularButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/proceed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/til_auth_details_name"
+        app:layout_constraintStart_toStartOf="@+id/til_auth_details_name"
+        app:layout_constraintTop_toBottomOf="@+id/til_auth_details_name"
+        app:layout_constraintVertical_bias="0.4" />
+
+    <ImageView
+        android:id="@+id/im_auth_details_walk"
+        android:layout_width="0dp"
+        android:layout_marginEnd="@dimen/spacing_normal"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/xml_auth_phone_cart"
+        app:layout_constraintBottom_toTopOf="@+id/til_auth_details_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@id/tv_auth_details_steps"
+        app:layout_constraintTop_toBottomOf="@id/tv_auth_details_name" />
+</androidx.constraintlayout.widget.ConstraintLayout>

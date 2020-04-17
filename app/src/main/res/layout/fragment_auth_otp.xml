@@ -6,5 +6,86 @@
     android:layout_height="match_parent"
     tools:context=".auth.fragments.AuthOtpFragment">
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_auth_otp_otp"
+        style="@style/GreenInputLayoutStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_extra_large"
+        android:layout_marginEnd="@dimen/spacing_extra_large"
+        app:errorEnabled="true"
+        app:helperTextEnabled="true"
+        app:helperText="Otp will be resent in 3:00"
+        app:layout_constraintVertical_bias="0.6"
+        android:hint="@string/otp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLength="6"
+            android:inputType="phone"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_auth_otp_resend"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_normal"
+        android:text="@string/resend_otp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/btn_auth_otp_verify"
+        app:layout_constraintEnd_toEndOf="@+id/btn_auth_otp_verify"
+        app:layout_constraintStart_toStartOf="@+id/btn_auth_otp_verify" />
+
+    <TextView
+        android:id="@+id/tv_auth_otp_name"
+        style="@style/HeadingExtraHugeTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/raleway"
+        android:text="@string/akhilesh"
+        app:layout_constraintBottom_toTopOf="@id/til_auth_otp_otp"
+        app:layout_constraintStart_toStartOf="@id/til_auth_otp_otp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <TextView
+        style="@style/HeadingTextStyle"
+        android:id="@+id/tv_auth_otp_steps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/one_step_away"
+        app:layout_constraintStart_toStartOf="@id/tv_auth_otp_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_auth_otp_name" />
+
+    <Button
+        android:id="@+id/btn_auth_otp_verify"
+        style="@style/CircularButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintVertical_bias="0.4"
+        android:text="@string/verify_otp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/til_auth_otp_otp"
+        app:layout_constraintStart_toStartOf="@+id/til_auth_otp_otp"
+        app:layout_constraintTop_toBottomOf="@+id/til_auth_otp_otp" />
+
+    <ImageView
+        android:id="@+id/im_auth_otp_walk"
+        android:layout_width="0dp"
+        android:layout_marginEnd="@dimen/spacing_normal"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/xml_auth_otp_walk"
+        app:layout_constraintBottom_toTopOf="@+id/til_auth_phone_phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@id/tv_auth_otp_steps"
+        app:layout_constraintTop_toBottomOf="@id/tv_auth_otp_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

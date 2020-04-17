@@ -14,6 +14,7 @@
         android:layout_marginStart="@dimen/spacing_extra_large"
         android:layout_marginEnd="@dimen/spacing_extra_large"
         app:errorEnabled="true"
+        app:layout_constraintVertical_bias="0.6"
         android:hint="@string/number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +23,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLength="13"
+            android:maxLength="14"
             android:inputType="phone"
             android:text="@string/country_code_prefix"/>
 
@@ -32,16 +33,18 @@
         android:id="@+id/tv_auth_phone_terms_and_conditions"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_normal"
+        android:layout_marginEnd="@dimen/spacing_normal"
         android:text="@string/terms_and_condition"
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/spacing_normal"
+        app:layout_constraintBottom_toTopOf="@+id/btn_auth_phone_verify"
         app:layout_constraintEnd_toEndOf="@id/til_auth_phone_phone"
-        app:layout_constraintStart_toStartOf="@id/til_auth_phone_phone"
-        app:layout_constraintTop_toBottomOf="@id/til_auth_phone_phone"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/til_auth_phone_phone" />
 
     <TextView
-        android:id="@+id/tv_auth_phone_bye_bye"
+        android:id="@+id/tv_auth_phone_name"
         style="@style/HeadingExtraHugeTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,25 +53,39 @@
         app:layout_constraintBottom_toTopOf="@id/til_auth_phone_phone"
         app:layout_constraintStart_toStartOf="@id/til_auth_phone_phone"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintVertical_bias="0.2" />
 
     <TextView
         style="@style/HeadingTextStyle"
-        android:id="@+id/tv_auth_phone_long_lines"
+        android:id="@+id/tv_auth_phone_steps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/long_lines"
-        app:layout_constraintStart_toStartOf="@id/tv_auth_phone_bye_bye"
-        app:layout_constraintTop_toBottomOf="@id/tv_auth_phone_bye_bye" />
+        app:layout_constraintStart_toStartOf="@id/tv_auth_phone_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_auth_phone_name" />
 
     <Button
-        android:id="@+id/btn_auth_phone_proceed"
+        android:id="@+id/btn_auth_phone_verify"
         style="@style/CircularButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_normal"
         android:text="@string/proceed"
+        app:layout_constraintVertical_bias="0.4"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/tv_auth_phone_terms_and_conditions"
         app:layout_constraintStart_toStartOf="@id/tv_auth_phone_terms_and_conditions"
-        app:layout_constraintTop_toBottomOf="@id/tv_auth_phone_terms_and_conditions" />
+        app:layout_constraintTop_toBottomOf="@+id/til_auth_phone_phone" />
+
+    <ImageView
+        android:id="@+id/im_auth_phone_walk"
+        android:layout_width="0dp"
+        android:layout_marginEnd="@dimen/spacing_normal"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/xml_auth_phone_cart"
+        app:layout_constraintBottom_toTopOf="@+id/til_auth_phone_phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@id/tv_auth_phone_steps"
+        app:layout_constraintTop_toBottomOf="@id/tv_auth_phone_name" />
 </androidx.constraintlayout.widget.ConstraintLayout>

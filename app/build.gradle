@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply from: '../versions.gradle'
 apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 29
@@ -66,6 +67,7 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:$versions.room"
     implementation "androidx.room:room-ktx:$versions.room"
 
+    implementation 'com.google.firebase:firebase-auth:19.3.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

@@ -8,7 +8,7 @@
     <string name="previous">Previous</string>
 
     <!-- Regex-->
-    <string name="regex_phone_india">\\+91\\d{10}$</string>
+    <string name="regex_phone_india">\\+91\\s\\d{10}$</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
@@ -21,9 +21,15 @@
     <string name="long_lines">Looooong\nlines</string>
     <string name="terms_and_condition">By going ahead you agree to the &lt;u&gt;Terms and Conditions&lt;/u&gt; of Grocer.</string>
     <string name="proceed">Proceed</string>
-    <string name="country_code_prefix">+91</string>
+    <string name="country_code_prefix">+91&#160;</string>
     <string name="auth_phone_phone_label">AuthPhoneFragment</string>
     <string name="auth_phone_otp_label">AuthOtpFragment</string>
     <string name="auth_phone_error_blank">Mobile number cannot be empty</string>
     <string name="auth_phone_error_invalid">The given mobile number is invalid</string>
+    <string name="akhilesh">Akhilesh</string>
+    <string name="one_step_away">we are one step \naway.</string>
+    <string name="otp">OTP</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="verify_otp">Verify OTP</string>
+    <string name="name">Name</string>
 </resources>

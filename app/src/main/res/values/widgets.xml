@@ -13,8 +13,8 @@
     //buttons
     <style name="CircularButtonStyle">
         <item name="cornerRadius">@dimen/radius_large</item>
-        <item name="android:paddingStart">@dimen/spacing_huge</item>
-        <item name="android:paddingEnd">@dimen/spacing_huge</item>
+        <item name="android:paddingStart">@dimen/spacing_extra_huge</item>
+        <item name="android:paddingEnd">@dimen/spacing_extra_huge</item>
     </style>
 
     //textt fields
