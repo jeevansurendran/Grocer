@@ -24,6 +24,7 @@ abstract class NetworkBoundResource<ResultType, RequestType> {
     init {
         val apiResponse = createCall()
         setValue(Resource.Loading())
+
         result.addSource(apiResponse) { response ->
             when (response) {
                 is ApiSuccessResponse -> {
@@ -33,12 +34,12 @@ abstract class NetworkBoundResource<ResultType, RequestType> {
                         setValue(Resource.Error("Invalid ResultType"))
                     }
                 }
-                is ApiEmptyResponse-> {
+                is ApiEmptyResponse -> {
                     setValue(Resource.Success(data = null))
                 }
-                is ApiErrorResponse-> {
+                is ApiErrorResponse -> {
                     onFetchFailed()
-                    setValue( Resource.Error(response.errorMessage))
+                    setValue(Resource.Error(response.errorMessage))
                 }
             }
         }
@@ -53,7 +54,8 @@ abstract class NetworkBoundResource<ResultType, RequestType> {
 
     // Called to save the result of the API response into the database
     @WorkerThread
-    protected abstract fun saveCallResult(item: RequestType)
+    protected open fun saveCallResult(item: RequestType) {
+    }
 
     // Called with the data in the database to decide whether to fetch
     // potentially updated data from the network.
@@ -73,7 +75,7 @@ abstract class NetworkBoundResource<ResultType, RequestType> {
 
     // Returns a LiveData object that represents the resource that's implemented
     // in the base class.   
-    val asLiveData: LiveData<ResultType> get() = result as LiveData<ResultType>
+    val asLiveData: LiveData<Resource<ResultType>> get() = result
 
 
 }

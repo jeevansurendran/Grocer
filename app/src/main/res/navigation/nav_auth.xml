@@ -31,5 +31,9 @@
         android:id="@+id/auth_details_fragment"
         android:name="com.silverpants.grocer.auth.fragments.AuthDetailsFragment"
         android:label="fragment_auth_details"
-        tools:layout="@layout/fragment_auth_details" />
+        tools:layout="@layout/fragment_auth_details" >
+        <argument
+            android:name="number"
+            app:argType="string" />
+    </fragment>
 </navigation>

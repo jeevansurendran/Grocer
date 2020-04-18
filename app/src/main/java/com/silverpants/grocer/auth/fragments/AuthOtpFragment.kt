@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.silverpants.grocer.R
 import kotlinx.android.synthetic.main.fragment_auth_otp.view.*
 
@@ -15,6 +16,7 @@ import kotlinx.android.synthetic.main.fragment_auth_otp.view.*
  */
 class AuthOtpFragment : Fragment() {
 
+    val arguments :AuthOtpFragmentArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,7 +28,8 @@ class AuthOtpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.btn_auth_otp_verify.setOnClickListener {
-            findNavController().navigate(R.id.take_user_details)
+            val action = AuthOtpFragmentDirections.takeUserDetails(arguments.number)
+            findNavController().navigate(action)
         }
     }
 }

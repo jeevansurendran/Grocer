@@ -32,6 +32,7 @@ class AuthPhoneFragment : Fragment() {
         view.tv_auth_phone_terms_and_conditions.text =
             Utils.fromHtml(getString(R.string.terms_and_condition))
 
+
         tilPhoneField = view.til_auth_phone_phone
         tilPhoneField.editText?.doAfterTextChanged {
             if(!tilPhoneField.error.isNullOrEmpty()) tilPhoneField.error= null
