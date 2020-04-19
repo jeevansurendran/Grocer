@@ -6,4 +6,6 @@ object Constants {
     const val API_PORT = "5000"
 
     val baseUrl ="$API_PROTOCOL$API_HOST:$API_PORT/"
+
+    const val AUTH_OTP_DEFAULT_TIMEOUT = 60 * 1.5.toLong()
 }

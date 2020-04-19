@@ -17,8 +17,7 @@ object AuthRepository {
         data.put("displayName", displayName)
         data.put("phoneNumber", phoneNumber)
         return object : NetworkBoundResource<UserModel, UserModel>() {
-            override fun createCall(): LiveData<ApiResponse<UserModel>> =
-                webApiService.register(data)
+            override fun createCall(): LiveData<ApiResponse<UserModel>> = webApiService.register(data)
 
         }.asLiveData
     }

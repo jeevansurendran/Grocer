@@ -26,8 +26,8 @@
     <string name="auth_phone_otp_label">AuthOtpFragment</string>
     <string name="auth_phone_error_blank">Mobile number cannot be empty</string>
     <string name="auth_phone_error_invalid">The given mobile number is invalid</string>
-    <string name="akhilesh">Akhilesh</string>
-    <string name="one_step_away">we are one step \naway.</string>
+    <string name="hey">Hey,</string>
+    <string name="one_step_away">you are one step \naway.</string>
     <string name="otp">OTP</string>
     <string name="resend_otp">Resend OTP</string>
     <string name="verify_otp">Verify OTP</string>

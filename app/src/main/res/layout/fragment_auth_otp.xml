@@ -15,7 +15,6 @@
         android:layout_marginEnd="@dimen/spacing_extra_large"
         app:errorEnabled="true"
         app:helperTextEnabled="true"
-        app:helperText="Otp will be resent in 3:00"
         app:layout_constraintVertical_bias="0.6"
         android:hint="@string/otp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLength="6"
-            android:inputType="phone"/>
+            android:inputType="numberDecimal"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -35,12 +34,12 @@
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing_normal"
         android:text="@string/resend_otp"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/btn_auth_otp_verify"
         app:layout_constraintEnd_toEndOf="@+id/btn_auth_otp_verify"
-        app:layout_constraintStart_toStartOf="@+id/btn_auth_otp_verify" />
+        app:layout_constraintStart_toStartOf="@+id/btn_auth_otp_verify"
+        app:layout_constraintTop_toBottomOf="@+id/til_auth_otp_otp" />
 
     <TextView
         android:id="@+id/tv_auth_otp_name"
@@ -48,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/raleway"
-        android:text="@string/akhilesh"
+        android:text="@string/hey"
         app:layout_constraintBottom_toTopOf="@id/til_auth_otp_otp"
         app:layout_constraintStart_toStartOf="@id/til_auth_otp_otp"
         app:layout_constraintTop_toTopOf="parent"
@@ -78,13 +77,12 @@
     <ImageView
         android:id="@+id/im_auth_otp_walk"
         android:layout_width="0dp"
-        android:layout_marginEnd="@dimen/spacing_normal"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/spacing_normal"
         android:adjustViewBounds="true"
         android:src="@drawable/xml_auth_otp_walk"
-        app:layout_constraintBottom_toTopOf="@+id/til_auth_phone_phone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.42"
         app:layout_constraintStart_toEndOf="@id/tv_auth_otp_steps"
         app:layout_constraintTop_toBottomOf="@id/tv_auth_otp_name" />
 
