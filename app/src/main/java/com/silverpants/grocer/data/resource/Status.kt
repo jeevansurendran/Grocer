@@ -1,12 +1,14 @@
 package com.silverpants.grocer.data.resource
 
 /**
-* Status of a [Resource] that is provided to the UI.
-*
-*/
+ * The [Status] enum specifies the differenct cases a [Resource] can be present
+ *
+ * @author @jeevansurendran
+ * @since 1.0
+ */
 enum class Status {
     SUCCESS,
     ERROR,
     LOADING,
-    FORBIDDEN
+    INVALID_REQUEST;
 }

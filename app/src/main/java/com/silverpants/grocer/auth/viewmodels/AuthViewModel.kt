@@ -9,6 +9,12 @@ import com.silverpants.grocer.auth.AuthRepository
 import com.silverpants.grocer.auth.models.AuthResultModel
 import com.silverpants.grocer.data.resource.Resource
 
+/**
+ * contains all the models related to authentication activities
+ *
+ * @author @jeevansurendran
+ * @since 1.0
+ */
 class AuthViewModel : ViewModel() {
     private val repository = AuthRepository
     private val _authResult = MediatorLiveData<Resource<AuthResultModel>>()

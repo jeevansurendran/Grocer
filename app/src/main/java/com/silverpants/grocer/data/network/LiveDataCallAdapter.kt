@@ -9,6 +9,10 @@ import retrofit2.Response
 import java.lang.reflect.Type
 import java.util.concurrent.atomic.AtomicBoolean
 
+
+/**
+ * class for live data returned from retrofit call
+ */
 class LiveDataCallAdapter<R>(private val responseType: Type) :
     CallAdapter<R, LiveData<ApiResponse<R>>> {
     override fun adapt(call: Call<R>): LiveData<ApiResponse<R>> {

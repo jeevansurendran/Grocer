@@ -10,6 +10,13 @@ import com.silverpants.grocer.data.resource.ApiResponse
 import com.silverpants.grocer.data.resource.NetworkBoundResource
 import com.silverpants.grocer.data.resource.Resource
 
+/**
+ * An [AuthRepository] object is responsible to return all the authentication related requests from the network
+ * and database.
+ *
+ * @author @jeevansurendran
+ * @since 1.0
+ */
 object AuthRepository {
     val webApiService: WebApiService = WebApiClient.webApiService
 

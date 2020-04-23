@@ -7,6 +7,13 @@ import com.google.firebase.auth.PhoneAuthProvider
 import com.silverpants.grocer.misc.Constants
 import java.util.concurrent.TimeUnit
 
+
+/**
+ * [PhoneAuthenticator] class provides a base implementation for different call states
+ *
+ * @author @jeevansurendran
+ * @since 1.0
+ */
 abstract class PhoneAuthenticator(val activity: Activity, val number: String) :
     PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 

@@ -8,6 +8,12 @@ import com.silverpants.grocer.MainActivity
 import com.silverpants.grocer.R
 import com.silverpants.grocer.auth.activities.AuthActivity
 
+/**
+ * The [OpenActivity] displays the logo and opens into the [MainActivity]
+ *
+ * @author @jeevansurendran
+ * @since 1.0
+ */
 class OpenActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 
 /**
- * A generic class that can provide a resource backed by both an offline database and the network.
+ * A generic class [NetworkBoundResource] that can provide a resource backed by both an offline database and the network.
  * Presently the data is only taken from network and no data is saved in the local database.
  * Planning to save the database
  *
@@ -15,13 +15,15 @@ import androidx.lifecycle.MediatorLiveData
  *
  * @param ResultType
  * @param RequestType
+ * @author @jeevansurendran
+ * @since 1.0
  */
-@Suppress("UNCHECKED_CAST")
 abstract class NetworkBoundResource<ResultType, RequestType> {
 
     private val result = MediatorLiveData<Resource<ResultType>>()
 
     init {
+        @Suppress("LeakingThis")
         val apiResponse = createCall()
         setValue(Resource.Loading())
 
@@ -29,7 +31,7 @@ abstract class NetworkBoundResource<ResultType, RequestType> {
             when (response) {
                 is ApiSuccessResponse -> {
                     try {
-                        setValue(Resource.Success(data = response.body as ResultType)) //cast can be taken care of somewhere else later
+                        setValue(Resource.Success(resultData(response.body)))
                     } catch (e: ClassCastException) {
                         setValue(Resource.Error("Invalid ResultType"))
                     }
@@ -41,13 +43,19 @@ abstract class NetworkBoundResource<ResultType, RequestType> {
                     onFetchFailed()
                     setValue(Resource.Error(response.errorMessage))
                 }
-                is ApiInvalidRequestResponse-> {
+                is ApiInvalidRequestResponse -> {
                     onFetchFailed()
                     setValue(Resource.InvalidRequest(response.errorMessage))
                 }
             }
         }
     }
+
+
+
+
+    @Suppress("UNCHECKED_CAST")
+    private fun resultData(data: RequestType): ResultType = data as ResultType
 
     @MainThread
     private fun setValue(newValue: Resource<ResultType>) {

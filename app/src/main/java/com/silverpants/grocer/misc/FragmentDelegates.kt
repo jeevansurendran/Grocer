@@ -1,3 +1,5 @@
+@file:Suppress("UNCHECKED_CAST")
+
 package com.silverpants.grocer.misc
 
 import androidx.fragment.app.Fragment
@@ -40,8 +42,6 @@ abstract class BaseParentDelegate<T>(private val fragment: Fragment) :
      */
     abstract fun extractValue(fragment: Fragment): T?
 
-    // TODO use ON_ATTACH and ON_DETACH events if they are added in new versions of the support
-    // library. Issue: https://issuetracker.google.com/issues/111469753.
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun create() {
         value = extractValue(fragment)
