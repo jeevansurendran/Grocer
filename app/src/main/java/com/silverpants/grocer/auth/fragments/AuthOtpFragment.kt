@@ -2,7 +2,6 @@ package com.silverpants.grocer.auth.fragments
 
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,7 +38,7 @@ class AuthOtpFragment : Fragment() {
     private val onBackPressedCallback: OnBackPressedCallback =
         object : OnBackPressedCallback(true /* enabled by default */) {
             override fun handleOnBackPressed() {
-                if(authViewModel.authState.value == AuthViewModel.STATES.STATE_INITIALIZED) {
+                if (authViewModel.authState.value == AuthViewModel.STATES.STATE_INITIALIZED) {
                     toast("wow this could happen")
                     findNavController().popBackStack()
                 }
@@ -50,6 +49,7 @@ class AuthOtpFragment : Fragment() {
         object : PhoneAuthenticator(requireActivity(), args.number) {
             override fun onVerificationSuccess(credential: PhoneAuthCredential) {
                 authViewModel.updateState(AuthViewModel.STATES.STATE_VERIFY_SUCCESS)
+                authViewModel.updateNumber(number)
                 authInteractionListener.authenticateWithNumberCredentials(credential)
             }
 
@@ -82,7 +82,7 @@ class AuthOtpFragment : Fragment() {
         override fun onTick(millisUntilFinished: Long) {
             val min = millisUntilFinished / 1000 / 60
             val sec = millisUntilFinished / 1000 - min * 60
-            tilOtpField.helperText = "OTP can be resent on ${Utils.formatTime(min, sec)}"
+            tilOtpField.helperText = "OTP can be resent in ${Utils.formatTime(min, sec)}"
         }
     }
     private lateinit var tilOtpField: TextInputLayout
@@ -109,19 +109,15 @@ class AuthOtpFragment : Fragment() {
             authViewModel.updateState(AuthViewModel.STATES.STATE_VERIFY_START)
         }
         btnResend.setOnClickListener {
-            if (authViewModel.authState.value == AuthViewModel.STATES.STATE_INITIALIZED) {
-                authViewModel.updateState(AuthViewModel.STATES.STATE_VERIFY_RESTART)
-            }
+            authViewModel.updateState(AuthViewModel.STATES.STATE_VERIFY_RESTART)
         }
         btnVerify.setOnClickListener {
-            if (authViewModel.authState.value == AuthViewModel.STATES.STATE_CODE_SENT) {
-                val otpCode = tilOtpField.editText?.text.toString()
-                if (otpCode.length != 6) {
-                    toast("Invalid Otp, Try Again")
-                    return@setOnClickListener
-                }
-                phoneAuthenticator.verifyOtpCode(otpCode)
+            val otpCode = tilOtpField.editText?.text.toString()
+            if (otpCode.length != 6) {
+                toast("Invalid Otp, Try Again")
+                return@setOnClickListener
             }
+            phoneAuthenticator.verifyOtpCode(otpCode)
         }
     }
 
@@ -148,7 +144,12 @@ class AuthOtpFragment : Fragment() {
                     AuthViewModel.STATES.STATE_CODE_SENT -> {
                         timer.start()
                         btnVerify.isEnabled = true
+                        btnResend.isEnabled = false
                         onBackPressedCallback.isEnabled = false
+                    }
+                    AuthViewModel.STATES.STATE_SIGN_IN_REGISTER-> {
+                        val action = AuthOtpFragmentDirections.takeUserDetails(number = args.number)
+                        findNavController().navigate(action)
                     }
                     else -> {
                         btnResend.isEnabled = true

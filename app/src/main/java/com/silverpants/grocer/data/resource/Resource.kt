@@ -11,7 +11,13 @@ sealed class Resource<T>(
     val data: T? = null,
     val message: String? = null
 ) {
-    class Success<T>(data: T?) : Resource<T>(Status.SUCCESS, data) //need not me null and must be loaded from database but that will be taken care of later
+    class Success<T>(data: T?) : Resource<T>(
+        Status.SUCCESS,
+        data
+    ) //need not me null and must be loaded from database but that will be taken care of later
+
     class Loading<T>(data: T? = null) : Resource<T>(Status.LOADING, data)
     class Error<T>(message: String, data: T? = null) : Resource<T>(Status.ERROR, data, message)
+    class InvalidRequest<T>(message: String, data: T? = null) : Resource<T>(Status.FORBIDDEN, data, message)
+
 }

@@ -41,6 +41,10 @@ abstract class NetworkBoundResource<ResultType, RequestType> {
                     onFetchFailed()
                     setValue(Resource.Error(response.errorMessage))
                 }
+                is ApiInvalidRequestResponse-> {
+                    onFetchFailed()
+                    setValue(Resource.InvalidRequest(response.errorMessage))
+                }
             }
         }
     }

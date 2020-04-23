@@ -1,6 +1,5 @@
 package com.silverpants.grocer.data.network
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import com.silverpants.grocer.data.resource.ApiResponse
 import retrofit2.Call
@@ -21,13 +20,11 @@ class LiveDataCallAdapter<R>(private val responseType: Type) :
                 if (started.compareAndSet(false, true)) {
                     call.enqueue(object : Callback<R> {
                         override fun onFailure(call: Call<R>, t: Throwable) {
-                            postValue(ApiResponse.create(t))
-                            Log.d("bruh resepnse",call.request().url().toString())
+                            postValue(ApiResponse.create(t, call))
                         }
 
                         override fun onResponse(call: Call<R>, response: Response<R>) {
-                            postValue(ApiResponse.create(response))
-                            Log.d("bruh throwable",call.request().url().toString())
+                            postValue(ApiResponse.create(response, call))
                         }
 
                     })
@@ -35,5 +32,6 @@ class LiveDataCallAdapter<R>(private val responseType: Type) :
             }
         }
     }
+
     override fun responseType() = responseType
 }

@@ -7,5 +7,6 @@ package com.silverpants.grocer.data.resource
 enum class Status {
     SUCCESS,
     ERROR,
-    LOADING
+    LOADING,
+    FORBIDDEN
 }
