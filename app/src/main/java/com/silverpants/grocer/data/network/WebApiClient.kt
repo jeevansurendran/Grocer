@@ -10,15 +10,30 @@ import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
 
 object WebApiClient {
+    var idToken: String? = null
     private fun provideClient(): OkHttpClient {
         val httpClientBuilder = OkHttpClient.Builder()
+
+        //this adds authorization header with token has token id cause that's the safest fucking shit
+        addAuthorizationInterceptor(httpClientBuilder)
+
         if (BuildConfig.DEBUG) {
             val loggingInterceptor = HttpLoggingInterceptor { Log.e("HTTP logging: ", it) }
             loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
             httpClientBuilder.addInterceptor(loggingInterceptor)
         }
-
         return httpClientBuilder.build()
+    }
+
+    private fun addAuthorizationInterceptor(httpClientBuilder: OkHttpClient.Builder) {
+        httpClientBuilder.addInterceptor {
+            val requestBuilder = it.request().newBuilder()
+            if (idToken != null) {
+                requestBuilder.addHeader("Authorization", "idToken : $idToken")
+            }
+            val request = requestBuilder.build()
+            it.proceed(request)
+        }
     }
 
     private val retrofitInstance = Retrofit.Builder().apply {
@@ -28,5 +43,5 @@ object WebApiClient {
         addCallAdapterFactory(LiveDataCallAdapterFactory())
     }.build()
 
-    val webApiService: WebApiService = retrofitInstance.create(WebApiService::class.java);
+    val webApiService: WebApiService = retrofitInstance.create(WebApiService::class.java)
 }
