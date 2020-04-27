@@ -27,6 +27,7 @@ class AuthViewModel : ViewModel() {
     val authResult: LiveData<Resource<AuthResultModel>> = _authResult
     val authState: LiveData<STATES> = _authState
     val shouldBlockExit get() = authState.value == STATES.STATE_VERIFY_START || authState.value == STATES.STATE_CODE_SENT
+    var count = 0
 
     fun updateState(state: STATES) {
         Log.d(TAG, "${authState.value} -> $state")

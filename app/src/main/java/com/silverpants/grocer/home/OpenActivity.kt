@@ -1,5 +1,6 @@
 package com.silverpants.grocer.home
 
+import android.accounts.AccountManager
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -25,10 +26,11 @@ class OpenActivity : AppCompatActivity() {
         super.onStart()
         Thread.sleep(2000)
         val user = FirebaseAuth.getInstance().currentUser
-        val intent = if(user == null) {
-            Intent(this, AuthActivity::class.java)
-        } else Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        if(user == null) {
+            val accountManager = AccountManager.get(this)
+
+
+        }
         finish()
     }
 }

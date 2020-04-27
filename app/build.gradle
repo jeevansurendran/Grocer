@@ -63,6 +63,12 @@ dependencies {
             [group: 'com.squareup.retrofit2', name: 'converter-jackson', version: versions.retrofit]
     )
 
+    //noinspection GradleDependency
+    implementation(
+            "com.squareup.okhttp3:okhttp:$versions.okhttp",
+            "com.squareup.okhttp3:logging-interceptor:$versions.okhttp"
+    )
+
     implementation "androidx.room:room-runtime:$versions.room"
     annotationProcessor "androidx.room:room-compiler:$versions.room"
     implementation "androidx.room:room-ktx:$versions.room"
