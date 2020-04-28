@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class UserModel(
-    val name:String,
-    val number:String,
-    val tokens: List<TokenModel>
+    val name: String?,
+    val number: String?
 )

@@ -53,6 +53,7 @@ class AuthActivity : AppCompatActivity(), AuthOtpFragment.AuthInteractionListene
     }
 
     private fun successAuth() {
+
         toast("Successfully logged in")
     }
 

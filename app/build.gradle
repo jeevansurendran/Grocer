@@ -70,6 +70,7 @@ dependencies {
     )
 
     implementation "androidx.room:room-runtime:$versions.room"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     annotationProcessor "androidx.room:room-compiler:$versions.room"
     implementation "androidx.room:room-ktx:$versions.room"
 

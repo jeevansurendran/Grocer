@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@id/homeShopsFragment"
+        android:icon="@drawable/xml_home_shops"
+        android:title="@string/home_sops" />
+    <item
+        android:id="@id/homeOrdersFragment"
+        android:icon="@drawable/xml_home_orders"
+        android:title="@string/home_orders" />
+    <item
+        android:id="@id/homeListsFragment"
+        android:icon="@drawable/xml_home_lists"
+        android:title="@string/home_lists" />
+    <item
+        android:id="@id/homeProfileFragment"
+        android:icon="@drawable/xml_home_profile"
+        android:title="@string/home_profile" />
+</menu>
