@@ -5,7 +5,10 @@ import com.fasterxml.jackson.databind.node.ObjectNode
 import com.silverpants.grocer.auth.models.AuthResultModel
 import com.silverpants.grocer.auth.models.UserModel
 import com.silverpants.grocer.data.resource.ApiResponse
+import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface WebApiService {
@@ -17,4 +20,7 @@ interface WebApiService {
 
     @POST("/users/guest/register")
     fun guestRegister(@Body userCredentials: ObjectNode): LiveData<ApiResponse<AuthResultModel>>
+
+    @GET("users/me")
+    suspend fun getUserDetails(): Response<UserModel>
 }

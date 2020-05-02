@@ -5,8 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.silverpants.grocer.R
-
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import com.silverpants.grocer.data.resource.Resource
+import com.silverpants.grocer.databinding.FragmentHomeProfileBinding
+import com.silverpants.grocer.home.viewmodels.UserDetailsViewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -14,47 +17,37 @@ import com.silverpants.grocer.R
  * create an instance of this fragment.
  */
 class HomeProfileFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentHomeProfileBinding? = null
+
+    private val viewModel: UserDetailsViewModel by activityViewModels()
+
+    //this has valid states only between onCreateView and onDestroyView.
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_profile, container, false)
+        _binding = FragmentHomeProfileBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        // TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-        private const val ARG_PARAM1 = "param1"
-        private const val ARG_PARAM2 = "param2"
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeProfileFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeProfileFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        viewModel.userDetails.observe(viewLifecycleOwner, Observer {
+            it?.let { resource ->
+                when (resource) {
+                    is Resource.Success -> {
+                        binding.txtUid.text = resource.data?.uid
+                    }
                 }
             }
+        })
+    }
+
+
+    companion object {
+        @JvmStatic
+        fun newInstance() = HomeProfileFragment()
     }
 }

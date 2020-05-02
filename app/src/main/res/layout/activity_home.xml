@@ -11,11 +11,26 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <androidx.appcompat.widget.Toolbar
+        <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
+            style="@style/Widget.MaterialComponents.Toolbar.Surface"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="?attr/actionBarSize">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:src="@drawable/xml_app_logo_small" />
+
+            <ImageView
+                android:id="@+id/btn_home_name"
+                android:layout_width="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_height="16dp"
+                android:layout_marginStart="@dimen/spacing_large"
+               android:src="@drawable/xml_app_name_small" />
+        </com.google.android.material.appbar.MaterialToolbar>
+
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -26,9 +41,9 @@
         style="@style/Widget.MaterialComponents.BottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:labelVisibilityMode="labeled"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_home" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -23,7 +23,7 @@ object OpenRepository {
         val data = objectMapper.createObjectNode()
         data.put("idToken", idToken)
         return object : NetworkBoundResource<AuthResultModel, AuthResultModel>() {
-            override fun createCall(): LiveData<ApiResponse<AuthResultModel>> =
+            override  fun createCall(): LiveData<ApiResponse<AuthResultModel>> =
                 webApiService.guestRegister(data)
         }.asLiveData
     }

@@ -68,7 +68,6 @@ class OpenActivity : AppCompatActivity() {
                 }
             }
         } else {
-            toast("hmmmm i am an user wtf?")
             user.getIdToken(false).addOnCompleteListener(onCompleteListener)
         }
     }

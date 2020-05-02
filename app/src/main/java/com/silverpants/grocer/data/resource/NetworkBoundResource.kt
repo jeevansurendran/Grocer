@@ -52,8 +52,6 @@ abstract class NetworkBoundResource<ResultType, RequestType> {
     }
 
 
-
-
     @Suppress("UNCHECKED_CAST")
     private fun resultData(data: RequestType): ResultType = data as ResultType
 
