@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import com.silverpants.grocer.data.resource.Resource
+import com.silverpants.grocer.network.legacy.Resource
 import com.silverpants.grocer.databinding.FragmentHomeProfileBinding
 import com.silverpants.grocer.home.viewmodels.UserDetailsViewModel
 

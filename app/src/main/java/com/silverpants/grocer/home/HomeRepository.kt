@@ -1,8 +1,6 @@
 package com.silverpants.grocer.home
 
-import androidx.lifecycle.liveData
-import com.silverpants.grocer.data.network.WebApiClient
-import com.silverpants.grocer.data.resource.Resource
+import com.silverpants.grocer.network.WebApiClient
 
 object HomeRepository {
     val webApiService = WebApiClient.webApiService

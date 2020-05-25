@@ -12,7 +12,7 @@ import com.silverpants.grocer.R
 import com.silverpants.grocer.auth.fragments.AuthDetailsFragment
 import com.silverpants.grocer.auth.fragments.AuthOtpFragment
 import com.silverpants.grocer.auth.viewmodels.AuthViewModel
-import com.silverpants.grocer.data.resource.Resource
+import com.silverpants.grocer.network.legacy.Resource
 import com.silverpants.grocer.misc.toast
 
 class AuthActivity : AppCompatActivity(), AuthOtpFragment.AuthInteractionListener, AuthDetailsFragment.AuthInteractionListener {

@@ -1,9 +1,10 @@
-package com.silverpants.grocer.data.network
+package com.silverpants.grocer.network
 
 import android.util.Log
 import com.silverpants.grocer.BuildConfig
 import com.silverpants.grocer.data.Converters
 import com.silverpants.grocer.misc.Constants
+import com.silverpants.grocer.network.legacy.LiveDataCallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -15,7 +16,9 @@ object WebApiClient {
         val httpClientBuilder = OkHttpClient.Builder()
 
         //this adds authorization header with token has token id cause that's the safest fucking shit
-        addAuthorizationInterceptor(httpClientBuilder)
+        addAuthorizationInterceptor(
+            httpClientBuilder
+        )
 
         if (BuildConfig.DEBUG) {
             val loggingInterceptor = HttpLoggingInterceptor { Log.e("HTTP logging: ", it) }
@@ -43,5 +46,6 @@ object WebApiClient {
         addCallAdapterFactory(LiveDataCallAdapterFactory())
     }.build()
 
-    val webApiService: WebApiService = retrofitInstance.create(WebApiService::class.java)
+    val webApiService: WebApiService = retrofitInstance.create(
+        WebApiService::class.java)
 }

@@ -1,4 +1,4 @@
-package com.silverpants.grocer.data.resource
+package com.silverpants.grocer.network.legacy
 
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread

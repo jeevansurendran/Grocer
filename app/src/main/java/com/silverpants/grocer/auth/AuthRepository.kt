@@ -2,13 +2,12 @@ package com.silverpants.grocer.auth
 
 import androidx.lifecycle.LiveData
 import com.silverpants.grocer.auth.models.AuthResultModel
-import com.silverpants.grocer.auth.models.UserModel
 import com.silverpants.grocer.data.Converters.objectMapper
-import com.silverpants.grocer.data.network.WebApiClient
-import com.silverpants.grocer.data.network.WebApiService
-import com.silverpants.grocer.data.resource.ApiResponse
-import com.silverpants.grocer.data.resource.NetworkBoundResource
-import com.silverpants.grocer.data.resource.Resource
+import com.silverpants.grocer.network.WebApiClient
+import com.silverpants.grocer.network.WebApiService
+import com.silverpants.grocer.network.legacy.ApiResponse
+import com.silverpants.grocer.network.legacy.NetworkBoundResource
+import com.silverpants.grocer.network.legacy.Resource
 
 /**
  * An [AuthRepository] object is responsible to return all the authentication related requests from the network

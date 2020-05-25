@@ -1,8 +1,6 @@
-package com.silverpants.grocer.data.network
+package com.silverpants.grocer.network.legacy
 
 import androidx.lifecycle.LiveData
-import com.google.android.gms.common.api.Api
-import com.silverpants.grocer.data.resource.ApiResponse
 import retrofit2.CallAdapter
 import retrofit2.CallAdapter.Factory
 import retrofit2.Retrofit
@@ -32,7 +30,9 @@ class LiveDataCallAdapterFactory : Factory() {
         }
         val bodyType = getParameterUpperBound(0, observableType)
 
-        return LiveDataCallAdapter<Any>(bodyType)
+        return LiveDataCallAdapter<Any>(
+            bodyType
+        )
     }
 
 }

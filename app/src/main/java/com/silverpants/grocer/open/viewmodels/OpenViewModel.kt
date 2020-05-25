@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import com.silverpants.grocer.auth.models.AuthResultModel
-import com.silverpants.grocer.data.resource.Resource
+import com.silverpants.grocer.network.legacy.Resource
 import com.silverpants.grocer.open.OpenRepository
 
 class OpenViewModel : ViewModel() {

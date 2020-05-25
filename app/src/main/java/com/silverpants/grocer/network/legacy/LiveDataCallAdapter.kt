@@ -1,8 +1,7 @@
-package com.silverpants.grocer.data.network
+package com.silverpants.grocer.network.legacy
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.silverpants.grocer.data.resource.ApiResponse
 import okhttp3.Request
 import retrofit2.Call
 import retrofit2.CallAdapter
@@ -56,5 +55,6 @@ class ApiResponseCall<R>(proxy: Call<R>) : CallDelegate<R, LiveData<ApiResponse<
 
         })
 
-    override fun cloneImpl() = ApiResponseCall(proxy.clone())
+    override fun cloneImpl() =
+        ApiResponseCall(proxy.clone())
 }

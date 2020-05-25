@@ -1,4 +1,4 @@
-package com.silverpants.grocer.data.resource
+package com.silverpants.grocer.network.legacy
 
 import retrofit2.Call
 import retrofit2.Response
@@ -12,7 +12,7 @@ import java.net.HttpURLConnection.HTTP_NO_CONTENT
  * @author @jeevansurendran
  * @since 1.0
  */
-sealed class ApiResponse<T>() {
+sealed class ApiResponse<T> {
     companion object {
         var url: String? = null
         var code: Int? = null
@@ -20,7 +20,9 @@ sealed class ApiResponse<T>() {
 
         fun <T> create(error: Throwable, call: Call<T>): ApiResponse<T> {
             url = call.request().url().toString()
-            return ApiErrorResponse(error.message ?: "unknown error")
+            return ApiErrorResponse(
+                error.message ?: "unknown error"
+            )
         }
 
         fun <T> create(response: Response<T>, call: Call<T>): ApiResponse<T> {
@@ -39,9 +41,13 @@ sealed class ApiResponse<T>() {
                 val msg = response.errorBody()?.string()
                 val errorMsg = if (msg.isNullOrEmpty()) response.message() else msg
                 if (code == HTTP_BAD_REQUEST)
-                    ApiInvalidRequestResponse(errorMsg ?: "unknown error")
+                    ApiInvalidRequestResponse(
+                        errorMsg ?: "unknown error"
+                    )
                 else
-                    ApiErrorResponse(errorMsg ?: "unknown error")
+                    ApiErrorResponse(
+                        errorMsg ?: "unknown error"
+                    )
             }
         }
     }

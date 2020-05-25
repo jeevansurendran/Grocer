@@ -9,8 +9,8 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GetTokenResult
 import com.silverpants.grocer.R
-import com.silverpants.grocer.data.network.WebApiClient
-import com.silverpants.grocer.data.resource.Resource
+import com.silverpants.grocer.network.WebApiClient
+import com.silverpants.grocer.network.legacy.Resource
 import com.silverpants.grocer.home.activities.HomeActivity
 import com.silverpants.grocer.misc.toast
 import com.silverpants.grocer.open.viewmodels.OpenViewModel
@@ -34,7 +34,7 @@ class OpenActivity : AppCompatActivity() {
             it?.let {
                 when (it) {
                     is Resource.Success -> {
-                        toast("registered wow");
+                        toast("registered wow")
                         val intent = Intent(this, HomeActivity::class.java)
                         startActivity(intent)
                         finish()

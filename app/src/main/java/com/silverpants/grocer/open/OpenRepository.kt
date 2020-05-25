@@ -2,12 +2,11 @@ package com.silverpants.grocer.open
 
 import androidx.lifecycle.LiveData
 import com.silverpants.grocer.auth.models.AuthResultModel
-import com.silverpants.grocer.auth.models.UserModel
 import com.silverpants.grocer.data.Converters.objectMapper
-import com.silverpants.grocer.data.network.WebApiClient
-import com.silverpants.grocer.data.resource.ApiResponse
-import com.silverpants.grocer.data.resource.NetworkBoundResource
-import com.silverpants.grocer.data.resource.Resource
+import com.silverpants.grocer.network.WebApiClient
+import com.silverpants.grocer.network.legacy.ApiResponse
+import com.silverpants.grocer.network.legacy.NetworkBoundResource
+import com.silverpants.grocer.network.legacy.Resource
 
 /**
  * An [OpenRepository] object is responsible to return all the opening related requests from the network

@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.silverpants.grocer.auth.AuthRepository
 import com.silverpants.grocer.auth.models.AuthResultModel
-import com.silverpants.grocer.data.resource.Resource
+import com.silverpants.grocer.network.legacy.Resource
 
 /**
  * contains all the models related to authentication activities

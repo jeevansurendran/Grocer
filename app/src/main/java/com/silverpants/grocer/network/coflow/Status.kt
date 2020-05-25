@@ -1,7 +1,7 @@
-package com.silverpants.grocer.data.resource
+package com.silverpants.grocer.network.coflow
 
 /**
- * The [Status] enum specifies the differenct cases a [Resource] can be present
+ * The [Status] enum specifies the differenct cases a [Result] can be present
  *
  * @author @jeevansurendran
  * @since 1.0

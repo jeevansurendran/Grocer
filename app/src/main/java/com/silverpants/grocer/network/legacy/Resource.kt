@@ -1,4 +1,4 @@
-package com.silverpants.grocer.data.resource
+package com.silverpants.grocer.network.legacy
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
@@ -21,38 +21,55 @@ sealed class Resource<T>(
         data
     ) //need not be null and must be loaded from database but that will be taken care of later
 
-    class Loading<T>(data: T? = null) : Resource<T>(Status.LOADING, data)
-    class Error<T>(message: String, data: T? = null) : Resource<T>(Status.ERROR, data, message)
+    class Loading<T>(data: T? = null) : Resource<T>(
+        Status.LOADING, data)
+    class Error<T>(message: String, data: T? = null) : Resource<T>(
+        Status.ERROR, data, message)
     class InvalidRequest<T>(message: String, data: T? = null) :
         Resource<T>(Status.INVALID_REQUEST, data, message)
 
     companion object {
         fun <T> createResourceFromResponse(apiResponseLiveData: LiveData<ApiResponse<T>>): LiveData<Resource<T>> =
             Transformations.map(apiResponseLiveData) { response ->
-                var resource: Resource<T> = Loading(null)
+                var resource: Resource<T> =
+                    Loading(null)
                 when (response) {
                     is ApiSuccessResponse -> {
                         resource = try {
-                            Success(response.body)
+                            Success(
+                                response.body
+                            )
                         } catch (e: ClassCastException) {
-                            Error("Invalid ResultType")
+                            Error(
+                                "Invalid ResultType"
+                            )
                         }
                     }
                     is ApiEmptyResponse -> {
-                        resource = Success(null)
+                        resource =
+                            Success(
+                                null
+                            )
                     }
                     is ApiErrorResponse -> {
-                        resource = Error(response.errorMessage)
+                        resource =
+                            Error(
+                                response.errorMessage
+                            )
                     }
                     is ApiInvalidRequestResponse -> {
-                        resource = InvalidRequest(response.errorMessage)
+                        resource =
+                            InvalidRequest(
+                                response.errorMessage
+                            )
                     }
                 }
                 resource
             }
 
         @JvmStatic
-        fun <T> cloneResource(data: T): Resource<T> = Success(data)
+        fun <T> cloneResource(data: T): Resource<T> =
+            Success(data)
     }
 
 }
