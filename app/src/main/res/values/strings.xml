@@ -38,4 +38,5 @@
     <string name="home_orders">Orders</string>
     <string name="home_lists">Lists</string>
     <string name="home_profile">Profile</string>
+    <string name="home_shop_heading">Choose a,\nGrocer store near you</string>
 </resources>

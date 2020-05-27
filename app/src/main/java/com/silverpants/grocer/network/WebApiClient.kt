@@ -16,12 +16,10 @@ object WebApiClient {
         val httpClientBuilder = OkHttpClient.Builder()
 
         //this adds authorization header with token has token id cause that's the safest fucking shit
-        addAuthorizationInterceptor(
-            httpClientBuilder
-        )
+        addAuthorizationInterceptor(httpClientBuilder)
 
         if (BuildConfig.DEBUG) {
-            val loggingInterceptor = HttpLoggingInterceptor { Log.e("HTTP logging: ", it) }
+            val loggingInterceptor = HttpLoggingInterceptor { Log.i("HTTP logging: ", it) }
             loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
             httpClientBuilder.addInterceptor(loggingInterceptor)
         }
@@ -47,5 +45,6 @@ object WebApiClient {
     }.build()
 
     val webApiService: WebApiService = retrofitInstance.create(
-        WebApiService::class.java)
+        WebApiService::class.java
+    )
 }

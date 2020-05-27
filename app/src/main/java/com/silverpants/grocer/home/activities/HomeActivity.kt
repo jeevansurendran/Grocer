@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.silverpants.grocer.R
 import com.silverpants.grocer.databinding.ActivityHomeBinding
+import com.silverpants.grocer.databinding.ContentHomeBinding
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {

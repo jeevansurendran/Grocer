@@ -25,25 +25,29 @@
             <ImageView
                 android:id="@+id/btn_home_name"
                 android:layout_width="wrap_content"
-                android:adjustViewBounds="true"
                 android:layout_height="16dp"
                 android:layout_marginStart="@dimen/spacing_large"
-               android:src="@drawable/xml_app_name_small" />
+                android:adjustViewBounds="true"
+                android:src="@drawable/xml_app_name_small" />
         </com.google.android.material.appbar.MaterialToolbar>
 
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_home" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bn_home"
-        style="@style/Widget.MaterialComponents.BottomNavigationView"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/bottom_nav_home" />
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <include layout="@layout/content_home" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bn_home"
+            style="@style/Widget.MaterialComponents.BottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:labelVisibilityMode="labeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:menu="@menu/bottom_nav_home" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

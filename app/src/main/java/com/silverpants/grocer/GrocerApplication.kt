@@ -1,4 +1,6 @@
 package com.silverpants.grocer
 
-class GrocerApplication {
-}
+import android.app.Application
+
+
+class GrocerApplication : Application()

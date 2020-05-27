@@ -3,7 +3,6 @@
     //text views
     <style name="HeadingTextStyle">
         <item name="android:textColor">@android:color/black</item>
-        <item name="fontFamily">@font/raleway</item>
         <item name="android:textSize">@dimen/font_normal</item>
     </style>
     <style name="HeadingExtraHugeTextStyle" parent="HeadingTextStyle">
@@ -16,7 +15,7 @@
         <item name="android:paddingEnd">@dimen/spacing_extra_huge</item>
     </style>
 
-    //textt fields
+    //text fields
     <style name="GreenInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeWidth">2dp</item>
     </style>
