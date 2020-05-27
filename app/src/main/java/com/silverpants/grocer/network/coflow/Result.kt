@@ -13,7 +13,7 @@ import java.lang.Exception
 sealed class Result<out T>(
     val status: Status,
     val data: T? = null,
-    val message: String? = null
+    val exception: Exception? = null
 ) {
     class Success<T>(data: T?) : Result<T>(
         Status.SUCCESS,
@@ -21,7 +21,7 @@ sealed class Result<out T>(
     )
 
     class Loading<T>(data: T? = null) : Result<T>(Status.LOADING, data)
-    class Error(exception: Exception) : Result<Nothing>(Status.ERROR,null, exception.message)
-    class InvalidRequest<T>(message: String, data: T? = null) :
-        Result<T>(Status.INVALID_REQUEST, data, message)
+    class Error(exception: Exception) : Result<Nothing>(Status.ERROR,null, exception)
+    class InvalidRequest<T>(exception: Exception, data: T? = null) :
+        Result<T>(Status.INVALID_REQUEST, data, exception)
 }

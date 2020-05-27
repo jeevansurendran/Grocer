@@ -45,7 +45,7 @@ class HomeShopsFragment : BaseFragment(R.layout.fragment_home_shops) {
                         epoxyNearby.requestModelBuild()
                     }
                     is Result.Error-> {
-                        toast(it.message!!)
+                        toast(it::class.simpleName!!)
                     }
                 }
             }

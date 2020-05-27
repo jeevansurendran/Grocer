@@ -2,17 +2,16 @@ package com.silverpants.grocer.open.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GetTokenResult
 import com.silverpants.grocer.R
-import com.silverpants.grocer.network.WebApiClient
-import com.silverpants.grocer.network.legacy.Resource
 import com.silverpants.grocer.home.activities.HomeActivity
 import com.silverpants.grocer.misc.toast
+import com.silverpants.grocer.network.WebApiClient
+import com.silverpants.grocer.network.legacy.Resource
 import com.silverpants.grocer.open.viewmodels.OpenViewModel
 
 /**
@@ -30,34 +29,33 @@ class OpenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_open)
 
+        val intent = Intent(this, HomeActivity::class.java)
+
+        firebaseAuth.addIdTokenListener { firebaseAuth: FirebaseAuth ->
+            firebaseAuth.currentUser?.getIdToken(false)?.addOnCompleteListener {
+                if (it.isSuccessful) {
+                    WebApiClient.idToken = it.result?.token!!
+                    val intent = Intent(this, HomeActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Log.e(TAG, it.exception?.message!!)
+                }
+            }
+        }
+
         viewModel.authResult.observe(this, Observer {
             it?.let {
                 when (it) {
                     is Resource.Success -> {
                         toast("registered wow")
-                        val intent = Intent(this, HomeActivity::class.java)
-                        startActivity(intent)
-                        finish()
                     }
                 }
             }
         })
-    }
 
 
-    override fun onStart() {
-        super.onStart()
-        val intent = Intent(this, HomeActivity::class.java)
         Thread.sleep(2000)
-        val onCompleteListener = OnCompleteListener<GetTokenResult> {
-            if (it.isSuccessful) {
-                WebApiClient.idToken = it.result?.token
-                startActivity(intent)
-                finish()
-            } else {
-                toast("${it.exception?.message}")
-            }
-        }
         val user = firebaseAuth.currentUser
         if (user == null) {
             firebaseAuth.signInAnonymously().addOnCompleteListener { task ->
@@ -67,8 +65,11 @@ class OpenActivity : AppCompatActivity() {
                     }
                 }
             }
-        } else {
-            user.getIdToken(false).addOnCompleteListener(onCompleteListener)
         }
     }
+
+    companion object {
+        val TAG = OpenActivity::class.simpleName
+    }
+
 }
