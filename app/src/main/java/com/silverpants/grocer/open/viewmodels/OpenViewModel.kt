@@ -1,23 +1,24 @@
 package com.silverpants.grocer.open.viewmodels
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.silverpants.grocer.auth.models.AuthResultModel
-import com.silverpants.grocer.network.legacy.Resource
-import com.silverpants.grocer.open.OpenRepository
+import androidx.lifecycle.viewModelScope
+import com.silverpants.grocer.data.users.models.UserModel
+import com.silverpants.grocer.domain.users.GuestRegisterUseCase
+import com.silverpants.grocer.network.coflow.Result
+import kotlinx.coroutines.launch
+
 
 class OpenViewModel : ViewModel() {
-    private val repository = OpenRepository
+    private val guestRegisterUseCase = GuestRegisterUseCase()
 
-    private val _authResult = MediatorLiveData<Resource<AuthResultModel>>()
+    private val _authResult: MutableLiveData<Result<UserModel>> = MutableLiveData()
+    val authResult: LiveData<Result<UserModel>> = _authResult
 
-    val authResult: LiveData<Resource<AuthResultModel>> = _authResult
-
-    fun guestRegisterUser(idToken: String) {
-        _authResult.addSource(
-            repository.getUserRegister(idToken),
-            _authResult::setValue
-        )
+    fun registerGuest(idToken: String) {
+        viewModelScope.launch {
+            _authResult.value = guestRegisterUseCase(idToken)
+        }
     }
 }

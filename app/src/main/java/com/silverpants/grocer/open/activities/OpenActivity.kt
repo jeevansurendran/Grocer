@@ -11,7 +11,7 @@ import com.silverpants.grocer.R
 import com.silverpants.grocer.home.activities.HomeActivity
 import com.silverpants.grocer.misc.toast
 import com.silverpants.grocer.network.WebApiClient
-import com.silverpants.grocer.network.legacy.Resource
+import com.silverpants.grocer.network.coflow.Result
 import com.silverpants.grocer.open.viewmodels.OpenViewModel
 
 /**
@@ -30,43 +30,38 @@ class OpenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_open)
 
         val intent = Intent(this, HomeActivity::class.java)
-
-        firebaseAuth.addIdTokenListener { firebaseAuth: FirebaseAuth ->
-            firebaseAuth.currentUser?.getIdToken(false)?.addOnCompleteListener {
-                if (it.isSuccessful) {
-                    WebApiClient.idToken = it.result?.token!!
-                    val intent = Intent(this, HomeActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                } else {
-                    Log.e(TAG, it.exception?.message!!)
-                }
-            }
-        }
-
-        viewModel.authResult.observe(this, Observer {
-            it?.let {
-                when (it) {
-                    is Resource.Success -> {
-                        toast("registered wow")
-                    }
-                }
-            }
-        })
-
-
+        setupObservers()
         Thread.sleep(2000)
         val user = firebaseAuth.currentUser
         if (user == null) {
             firebaseAuth.signInAnonymously().addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     task.result?.user?.getIdToken(false)?.addOnCompleteListener {
-                        viewModel.guestRegisterUser(it.result?.token!!)
+                        viewModel.registerGuest(it.result?.token!!)
                     }
                 }
             }
+        } else {
+            startActivity(intent)
+            finish()
         }
     }
+    private fun setupObservers() {
+        val intent = Intent(this, HomeActivity::class.java)
+
+        viewModel.authResult.observe(this, Observer {
+            it?.let {
+                when (it) {
+                    is Result.Success -> {
+                        toast("registered wow")
+                        startActivity(intent)
+                        finish()
+                    }
+                }
+            }
+        })
+    }
+
 
     companion object {
         val TAG = OpenActivity::class.simpleName

@@ -20,7 +20,7 @@ sealed class Result<out T>(
         data
     )
 
-    class Loading<T>(data: T? = null) : Result<T>(Status.LOADING, data)
+    class Loading() : Result<Nothing>(Status.LOADING)
     class Error(exception: Exception) : Result<Nothing>(Status.ERROR,null, exception)
     class InvalidRequest<T>(exception: Exception, data: T? = null) :
         Result<T>(Status.INVALID_REQUEST, data, exception)

@@ -1,6 +1,7 @@
 package com.silverpants.grocer.home.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -13,6 +14,7 @@ import com.silverpants.grocer.misc.base.BaseFragment
 import com.silverpants.grocer.misc.toast
 import com.silverpants.grocer.network.coflow.Result
 import com.silverpants.grocer.network.legacy.Resource
+import timber.log.Timber
 
 
 /**
@@ -45,7 +47,7 @@ class HomeShopsFragment : BaseFragment(R.layout.fragment_home_shops) {
                         epoxyNearby.requestModelBuild()
                     }
                     is Result.Error-> {
-                        toast(it::class.simpleName!!)
+                        Timber.e(it.exception)
                     }
                 }
             }
