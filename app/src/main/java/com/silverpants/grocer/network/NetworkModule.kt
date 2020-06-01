@@ -10,9 +10,8 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
-import timber.log.Timber
 
-object WebApiClient {
+object NetworkModule {
     var idToken: String? = null
     private fun provideClient(): OkHttpClient {
         val httpClientBuilder = OkHttpClient.Builder()
@@ -53,13 +52,15 @@ object WebApiClient {
 
     private fun provideAuthToken() {
         val firebaseAuth = FirebaseAuth.getInstance()
+        firebaseAuth.currentUser?.getIdToken(false)
+        setupProvideAuthTokenListener()
+    }
+
+    private fun setupProvideAuthTokenListener() {
+        val firebaseAuth = FirebaseAuth.getInstance()
         firebaseAuth.addIdTokenListener { firebaseAuth: FirebaseAuth ->
-            firebaseAuth.currentUser?.getIdToken(false)?.addOnCompleteListener {
-                if (it.isSuccessful) {
-                    idToken = it.result?.token!!
-                } else {
-                    Timber.e(it.exception)
-                }
+            firebaseAuth.currentUser?.getIdToken(false)?.addOnSuccessListener {
+                idToken = it.token
             }
         }
     }

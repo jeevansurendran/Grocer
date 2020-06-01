@@ -8,7 +8,7 @@ import com.silverpants.grocer.databinding.ItemHomeShopBinding
 import com.silverpants.grocer.misc.base.BaseEpoxyModelWithHolder
 
 @EpoxyModelClass(layout = R.layout.item_home_shop)
-abstract class ShopModelWithHolder : BaseEpoxyModelWithHolder<ItemHomeShopBinding>() {
+abstract class HomeShopWithHolder : BaseEpoxyModelWithHolder<ItemHomeShopBinding>() {
     @EpoxyAttribute
     lateinit var shopModel: ShopModel
 

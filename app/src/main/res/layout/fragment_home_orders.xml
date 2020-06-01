@@ -8,8 +8,11 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
+        android:layout_marginStart="@dimen/spacing_normal"
         android:layout_width="0dp"
+        android:layout_marginEnd="@dimen/spacing_normal"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_extra_huge"
         android:hint="Create a shop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,6 +20,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
+            android:textSize="@dimen/font_very_small"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 

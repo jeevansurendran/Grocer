@@ -24,4 +24,6 @@ sealed class Result<out T>(
     class Error(exception: Exception) : Result<Nothing>(Status.ERROR,null, exception)
     class InvalidRequest<T>(exception: Exception, data: T? = null) :
         Result<T>(Status.INVALID_REQUEST, data, exception)
+
+
 }

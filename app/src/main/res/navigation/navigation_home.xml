@@ -9,20 +9,46 @@
         android:id="@+id/homeShopsFragment"
         android:name="com.silverpants.grocer.home.fragments.HomeShopsFragment"
         android:label="fragment_home_shops"
-        tools:layout="@layout/fragment_home_shops" />
+        tools:layout="@layout/fragment_home_shops" >
+        <action
+            android:id="@+id/networkError"
+            app:destination="@id/networkErrorFragment"
+            app:launchSingleTop="false" />
+    </fragment>
     <fragment
         android:id="@+id/homeOrdersFragment"
         android:name="com.silverpants.grocer.home.fragments.HomeOrdersFragment"
         android:label="fragment_home_orders"
-        tools:layout="@layout/fragment_home_orders" />
+        tools:layout="@layout/fragment_home_orders" >
+        <action
+            android:id="@+id/networkError"
+            app:destination="@id/networkErrorFragment" />
+    </fragment>
     <fragment
         android:id="@+id/homeListsFragment"
         android:name="com.silverpants.grocer.home.fragments.HomeListsFragment"
         android:label="fragment_home_lists"
-        tools:layout="@layout/fragment_home_lists" />
+        tools:layout="@layout/fragment_home_lists" >
+        <action
+            android:id="@+id/networkError"
+            app:destination="@id/networkErrorFragment" />
+    </fragment>
     <fragment
         android:id="@+id/homeProfileFragment"
         android:name="com.silverpants.grocer.home.fragments.HomeProfileFragment"
         android:label="fragment_home_profile"
-        tools:layout="@layout/fragment_home_profile" />
+        tools:layout="@layout/fragment_home_profile" >
+        <action
+            android:id="@+id/networkError"
+            app:destination="@id/networkErrorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/networkErrorFragment"
+        android:name="com.silverpants.grocer.network.fragments.NetworkErrorFragment"
+        android:label="fragment_network_error"
+        tools:layout="@layout/fragment_network_error" >
+        <argument
+            android:name="tryAgainListener"
+            app:argType="com.silverpants.grocer.network.fragments.NetworkErrorFragment$TryAgainListener" />
+    </fragment>
 </navigation>

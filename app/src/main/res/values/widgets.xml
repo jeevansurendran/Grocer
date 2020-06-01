@@ -5,6 +5,12 @@
         <item name="android:textColor">@android:color/black</item>
         <item name="android:textSize">@dimen/font_normal</item>
     </style>
+    <style name="HeadingHugeTextStyle" parent="HeadingTextStyle">
+        <item name="android:textSize">@dimen/font_huge</item>
+    </style>
+    <style name="HeadingLargeTextStyle" parent="HeadingTextStyle">
+        <item name="android:textSize">@dimen/font_large</item>
+    </style>
     <style name="HeadingExtraHugeTextStyle" parent="HeadingTextStyle">
         <item name="android:textSize">@dimen/font_extra_huge</item>
     </style>

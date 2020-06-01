@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.silverpants.grocer.data.users.models.UserModel
 import com.silverpants.grocer.domain.users.GuestRegisterUseCase
+import com.silverpants.grocer.network.NetworkModule
 import com.silverpants.grocer.network.coflow.Result
 import kotlinx.coroutines.launch
 

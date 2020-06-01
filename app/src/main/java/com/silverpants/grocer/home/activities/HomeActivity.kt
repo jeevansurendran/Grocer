@@ -7,10 +7,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.silverpants.grocer.R
 import com.silverpants.grocer.databinding.ActivityHomeBinding
-import com.silverpants.grocer.databinding.ContentHomeBinding
-import kotlinx.android.synthetic.main.activity_home.*
+import com.silverpants.grocer.misc.base.BaseActivity
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity() {
 
     private lateinit var binding: ActivityHomeBinding
     private val navController: NavController by lazy { findNavController(R.id.nav_host_home) }
@@ -19,10 +18,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setupBottomNavigationMenu()
-
-
     }
 
     private fun setupBottomNavigationMenu() {
