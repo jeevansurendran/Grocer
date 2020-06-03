@@ -26,10 +26,7 @@ class OpenActivity : AppCompatActivity() {
     private val idTokenListener = FirebaseAuth.IdTokenListener { firebaseAuth ->
         firebaseAuth.currentUser?.getIdToken(false)?.addOnCompleteListener {
             if (it.isSuccessful) {
-                val intent = Intent(this, HomeActivity::class.java)
-                startActivity(intent)
-                finish()
-
+                viewModel.setVerified(true)
             }
         }
     }
@@ -52,7 +49,6 @@ class OpenActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
-        val intent = Intent(this, HomeActivity::class.java)
 
         viewModel.authResult.observe(this, Observer {
             it?.let {
@@ -61,6 +57,13 @@ class OpenActivity : AppCompatActivity() {
                         toast("registered wow")
                     }
                 }
+            }
+        })
+        viewModel.loginVerified.observe(this, Observer {
+            if (it) {
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+                finish()
             }
         })
     }

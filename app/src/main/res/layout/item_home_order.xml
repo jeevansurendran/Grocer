@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/spacing_normal"
+    android:layout_marginTop="@dimen/spacing_tiny"
+    android:layout_marginEnd="@dimen/spacing_normal"
+    android:layout_marginBottom="@dimen/spacing_tiny"
+    app:cardCornerRadius="@dimen/card_radius_normal"
+    app:cardElevation="0dp">
+    git filter-branch --force --index-filter \
+    "git rm --cached --ignore-unmatch app/google-services.json" \
+    --prune-empty --tag-name-filter cat -- --all
+    > Rewrite 48dc599c80e20527ed902928085e7861e6b3cbe6 (266/266)
+    > Ref 'refs/heads/master' was rewritten
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorSurfaceGrey">
+
+        <TextView
+            android:id="@+id/tv_order_name"
+            style="@style/HeadingTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:layout_marginEnd="@dimen/spacing_normal"
+            android:fontFamily="@font/poppins_light"
+            app:layout_constraintEnd_toStartOf="@id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Go Happy Hyper Market" />
+
+        <TextView
+            android:id="@+id/tv_order_details"
+            style="@style/ParagraphStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/tv_order_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_order_name"
+            tools:text="Expected delivery :3/11/2020" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="100dp" />
+
+        <ImageView
+            android:id="@+id/im_home_order_banner"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/home_order_height"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:scaleType="centerCrop"
+            android:src="@drawable/xml_home_order"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_order_details" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fake_money"
+            app:layout_constraintBottom_toTopOf="@+id/im_home_order_banner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

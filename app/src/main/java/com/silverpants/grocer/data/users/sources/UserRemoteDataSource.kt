@@ -11,6 +11,6 @@ object UserRemoteDataSource {
     suspend fun guestRegister(idToken: String): UserModel {
         val data = Converters.objectMapper.createObjectNode()
         data.put("idToken", idToken)
-        return apiService.guestRegister(data);
+        return apiService.postGuestRegister(data);
     }
 }

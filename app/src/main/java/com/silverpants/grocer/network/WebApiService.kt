@@ -13,13 +13,13 @@ import retrofit2.http.Path
 
 interface WebApiService {
     @POST("/users/register")
-    fun register(@Body userCredentials: ObjectNode): LiveData<ApiResponse<AuthResultModel>>
+    fun postRegister(@Body userCredentials: ObjectNode): LiveData<ApiResponse<AuthResultModel>>
 
     @POST("/users/login")
-    fun login(@Body userCredentials: ObjectNode): LiveData<ApiResponse<AuthResultModel>>
+    fun postLogin(@Body userCredentials: ObjectNode): LiveData<ApiResponse<AuthResultModel>>
 
     @POST("/users/guest/register")
-    suspend fun guestRegister(@Body userCredentials: ObjectNode): UserModel
+    suspend fun postGuestRegister(@Body userCredentials: ObjectNode): UserModel
 
     @GET("/users/me")
     suspend fun getUserDetails(): UserModel
@@ -30,7 +30,8 @@ interface WebApiService {
     @GET("/shops")
     suspend fun getAllShops(): List<ShopModel>
 
-    @GET("/shops")
+    @GET("/shops/nearby")
     suspend fun getNearbyShops(): List<ShopModel>
 
+    
 }

@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:text="@string/home_shop_heading"
     android:layout_marginTop="@dimen/spacing_small"
-    android:layout_marginBottom="@dimen/spacing_small"
-    android:layout_marginStart="@dimen/spacing_normal"
+    android:layout_marginStart="@dimen/spacing_medium"
     android:layout_marginEnd="@dimen/spacing_small"
     android:id="@+id/tv_shop_heading"
     style="@style/HeadingTextStyle"/>

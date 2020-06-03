@@ -24,7 +24,7 @@ object AuthRepository {
         data.put("phoneNumber", phoneNumber)
         data.put("idToken", idToken)
         return object : NetworkBoundResource<AuthResultModel, AuthResultModel>() {
-            override  fun createCall(): LiveData<ApiResponse<AuthResultModel>> = webApiService.login(data)
+            override  fun createCall(): LiveData<ApiResponse<AuthResultModel>> = webApiService.postLogin(data)
         }.asLiveData
     }
 
@@ -34,7 +34,7 @@ object AuthRepository {
         data.put("phoneNumber", phoneNumber)
         data.put("idToken", idToken)
         return object : NetworkBoundResource<AuthResultModel, AuthResultModel>() {
-            override  fun createCall(): LiveData<ApiResponse<AuthResultModel>> = webApiService.register(data)
+            override  fun createCall(): LiveData<ApiResponse<AuthResultModel>> = webApiService.postRegister(data)
 
         }.asLiveData
     }

@@ -24,6 +24,10 @@
     <dimen name="spacing_gigantic">62dp</dimen>
     <dimen name="spacing_incredible">77dp</dimen>
 
+    <!-- Radius for card view -->
+    <dimen name="card_radius_normal">10dp</dimen>
+
     <!-- Radius for view-->
     <dimen name="radius_large">16dp</dimen>
+    <dimen name="home_order_height">175dp</dimen>
 </resources>
