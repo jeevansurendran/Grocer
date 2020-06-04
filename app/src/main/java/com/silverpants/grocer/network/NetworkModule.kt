@@ -31,7 +31,7 @@ object NetworkModule {
         httpClientBuilder.addInterceptor {
             val requestBuilder = it.request().newBuilder()
             if (idToken != null) {
-                requestBuilder.addHeader("Authorization", "idToken : $idToken")
+                requestBuilder.addHeader("Authorization", "Token : $idToken")
             }
             val request = requestBuilder.build()
             it.proceed(request)
