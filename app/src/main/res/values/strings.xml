@@ -40,4 +40,6 @@
     <string name="home_profile">Profile</string>
     <string name="home_shop_heading">Choose a,\nGrocer store near you</string>
     <string name="fake_money">₹3,00,000.00</string>
+    <string name="firebase_auth_no_network_connection">No network</string>
+    <string name="firebase_auth_unknown_error">Developer error</string>
 </resources>

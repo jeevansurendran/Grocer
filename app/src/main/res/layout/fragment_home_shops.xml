@@ -9,7 +9,7 @@
         android:id="@+id/epoxy_nearby_shops"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".home.fragments.HomeShopsFragment"
+        tools:context=".view.home.fragments.HomeShopsFragment"
         tools:itemCount="3"
         tools:listitem="@layout/item_home_shop" />
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

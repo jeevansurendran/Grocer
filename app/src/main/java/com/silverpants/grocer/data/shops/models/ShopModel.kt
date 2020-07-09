@@ -7,6 +7,5 @@ import java.util.*
 data class ShopModel(
     val name: String,
     val pk: Long,
-    val number: String,
-    val createdDate: Date
+    val number: String
 )

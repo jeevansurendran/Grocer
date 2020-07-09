@@ -2,22 +2,22 @@ package com.silverpants.grocer.data.shops.sources
 
 import com.silverpants.grocer.data.shops.models.ShopModel
 import com.silverpants.grocer.network.NetworkModule
-import com.silverpants.grocer.network.WebApiService
+import com.silverpants.grocer.network.ApiService
 
 
 object ShopRemoteDataSource {
 
-    private val apiService: WebApiService = NetworkModule.webApiService
+    private val API_SERVICE: ApiService = NetworkModule.apiService
 
     suspend fun getAllShopsList(): List<ShopModel> {
-        return apiService.getAllShops()
+        return API_SERVICE.getAllShops()
     }
 
     suspend fun getNearbyShopsList(): List<ShopModel> {
-        return apiService.getNearbyShops()
+        return API_SERVICE.getNearbyShops()
     }
 
     suspend fun getShop(pk: Long): ShopModel {
-        return apiService.getShop(pk)
+        return API_SERVICE.getShop(pk)
     }
 }

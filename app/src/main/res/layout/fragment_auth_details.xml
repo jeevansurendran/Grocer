@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".auth.fragments.AuthDetailsFragment">
+    tools:context=".view.auth.fragments.AuthDetailsFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_auth_details_name"

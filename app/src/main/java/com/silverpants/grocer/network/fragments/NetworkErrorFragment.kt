@@ -24,7 +24,7 @@ class NetworkErrorFragment :
     var callback: OnBackPressedCallback =
         object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                //do nothing unfortunately
+                requireActivity().finish()
             }
         }
 

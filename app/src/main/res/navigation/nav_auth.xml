@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/auth_phone_fragment"
-        android:name="com.silverpants.grocer.auth.fragments.AuthPhoneFragment"
+        android:name="com.silverpants.grocer.view.auth.fragments.AuthPhoneFragment"
         android:label="@string/auth_phone_phone_label"
         tools:layout="@layout/fragment_auth_phone">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/auth_otp_fragment"
-        android:name="com.silverpants.grocer.auth.fragments.AuthOtpFragment"
+        android:name="com.silverpants.grocer.view.auth.fragments.AuthOtpFragment"
         android:label="@string/auth_phone_phone_label"
         tools:layout="@layout/fragment_auth_otp" >
         <argument
@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/auth_details_fragment"
-        android:name="com.silverpants.grocer.auth.fragments.AuthDetailsFragment"
+        android:name="com.silverpants.grocer.view.auth.fragments.AuthDetailsFragment"
         android:label="fragment_auth_details"
         tools:layout="@layout/fragment_auth_details" >
         <argument

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeShopsFragment"
-        android:name="com.silverpants.grocer.home.fragments.HomeShopsFragment"
+        android:name="com.silverpants.grocer.view.home.fragments.HomeShopsFragment"
         android:label="fragment_home_shops"
         tools:layout="@layout/fragment_home_shops" >
         <action
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeOrdersFragment"
-        android:name="com.silverpants.grocer.home.fragments.HomeOrdersFragment"
+        android:name="com.silverpants.grocer.view.home.fragments.HomeOrdersFragment"
         android:label="fragment_home_orders"
         tools:layout="@layout/fragment_home_orders" >
         <action
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeListsFragment"
-        android:name="com.silverpants.grocer.home.fragments.HomeListsFragment"
+        android:name="com.silverpants.grocer.view.home.fragments.HomeListsFragment"
         android:label="fragment_home_lists"
         tools:layout="@layout/fragment_home_lists" >
         <action
@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeProfileFragment"
-        android:name="com.silverpants.grocer.home.fragments.HomeProfileFragment"
+        android:name="com.silverpants.grocer.view.home.fragments.HomeProfileFragment"
         android:label="fragment_home_profile"
         tools:layout="@layout/fragment_home_profile" >
         <action

@@ -1,6 +1,5 @@
 package com.silverpants.grocer.network
 
-import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.silverpants.grocer.BuildConfig
 import com.silverpants.grocer.data.Converters
@@ -10,6 +9,8 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
+import timber.log.Timber
+
 
 object NetworkModule {
     var idToken: String? = null
@@ -20,7 +21,7 @@ object NetworkModule {
         addAuthorizationInterceptor(httpClientBuilder)
 
         if (BuildConfig.DEBUG) {
-            val loggingInterceptor = HttpLoggingInterceptor { Log.i("HTTP logging: ", it) }
+            val loggingInterceptor = HttpLoggingInterceptor { Timber.i(it) }
             loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
             httpClientBuilder.addInterceptor(loggingInterceptor)
         }
@@ -31,7 +32,7 @@ object NetworkModule {
         httpClientBuilder.addInterceptor {
             val requestBuilder = it.request().newBuilder()
             if (idToken != null) {
-                requestBuilder.addHeader("Authorization", "Token : $idToken")
+                requestBuilder.addHeader("Authorization", "Bearer $idToken")
             }
             val request = requestBuilder.build()
             it.proceed(request)
@@ -46,22 +47,27 @@ object NetworkModule {
         addCallAdapterFactory(LiveDataCallAdapterFactory())
     }.build()
 
-    val webApiService: WebApiService = retrofitInstance.create(
-        WebApiService::class.java
+    val apiService: ApiService = retrofitInstance.create(
+        ApiService::class.java
     )
 
     private fun provideAuthToken() {
-        val firebaseAuth = FirebaseAuth.getInstance()
-        firebaseAuth.currentUser?.getIdToken(false)
         setupProvideAuthTokenListener()
+    }
+
+    private fun setupFreshToken() {
+        val firebaseAuth = FirebaseAuth.getInstance()
+        firebaseAuth.currentUser?.getIdToken(false)?.addOnSuccessListener {
+            Timber.d("freshTokenDetected")
+            idToken = it.token
+        }
     }
 
     private fun setupProvideAuthTokenListener() {
         val firebaseAuth = FirebaseAuth.getInstance()
         firebaseAuth.addIdTokenListener { firebaseAuth: FirebaseAuth ->
-            firebaseAuth.currentUser?.getIdToken(false)?.addOnSuccessListener {
-                idToken = it.token
-            }
+            Timber.d("Token Change Detected")
+            setupFreshToken()
         }
     }
 }
