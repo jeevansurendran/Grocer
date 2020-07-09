@@ -11,11 +11,11 @@ object AuthRepository {
     }
 
     suspend fun postGuestLogin(idToken: String): TokenModel {
-        return authRemoteDataSource.postGuestRegister(idToken)
+        return authRemoteDataSource.postGuestLogin(idToken)
     }
 
     suspend fun postRefreshToken(refreshToken: String): TokenModel {
-        return authRemoteDataSource.postGuestRegister(refreshToken)
+        return authRemoteDataSource.postRefreshToken(refreshToken)
     }
 
     suspend fun postLogout(refreshToken: String) {

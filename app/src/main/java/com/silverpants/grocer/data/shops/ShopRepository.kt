@@ -15,7 +15,7 @@ object ShopRepository {
         return flow {
             val result = shopRemoteDataSource.getNearbyShopsList()
             emit(Result.Success(result))
-            delay(Constants.AUTH_OTP_DEFAULT_TIMEOUT)
+            delay(Constants.DEFAULT_REFRESH_RATE)
         }
     }
 

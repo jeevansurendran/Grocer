@@ -4,6 +4,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.silverpants.grocer.data.auth.AuthRepository
 import com.silverpants.grocer.domain.UseCase
 import com.silverpants.grocer.misc.suspendAndWait
+import com.silverpants.grocer.network.NetworkModule
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import timber.log.Timber
@@ -34,8 +35,7 @@ class ProcessAuthUseCase : UseCase<Unit, String>(Dispatchers.Default) {
                 authRepository.postGuestLogin(idToken!!)
             }
         }
-        Timber.d(token.toString())
-        //TODO (2) set the logic for AuthToken
+        NetworkModule.token = token
         return "Successfully logged in"
     }
 }

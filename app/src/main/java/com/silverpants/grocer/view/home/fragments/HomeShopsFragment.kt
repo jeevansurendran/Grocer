@@ -29,55 +29,50 @@ class HomeShopsFragment : BaseFragment(R.layout.fragment_home_shops),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val binding = FragmentHomeShopsBinding.bind(view)
+        val epoxyNearby = binding.epoxyNearbyShops
+
+        epoxyNearby.withModels {
+            homeHeadingWithHolder {
+                id("shop heading")
+                heading(resources.getString(R.string.home_shop_heading))
+            }
+            shopsViewModel.nearbyShopData.value?.data.takeIf { !it.isNullOrEmpty() }
+                ?.forEachIndexed { index, shopModel ->
+                    homeShopWithHolder {
+                        id("shop $index")
+                        shopModel(shopModel)
+                    }
+                }
+        }
+        shopsViewModel.nearbyShopData.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                handleLoadingRefresh(it)
+                when (it) {
+                    is Result.Success -> {
+                        epoxyNearby.requestModelBuild()
+
+                    }
+                    is Result.Error -> {
+                        toast(it.exception?.message!!)
+                        val action = HomeShopsFragmentDirections.networkError(this)
+                        findNavController().navigate(action)
+                    }
+                    else -> {
+
+                    }
+                }
+            }
+        })
+        initRefreshScreen(R.id.srl_home_shops)
     }
 
     override fun tryAgain(v: View) {
-        TODO("Not yet implemented")
+        shopsViewModel.refresh()
+        findNavController().popBackStack()
     }
-//        val epoxyNearby = binding.epoxyNearbyShops
 
-//        epoxyNearby.withModels {
-//            homeHeadingWithHolder {
-//                id("shop heading")
-//                heading(resources.getString(R.string.home_shop_heading))
-//            }
-//            shopsViewModel.nearbyShopData.value?.data.takeIf { !it.isNullOrEmpty() }
-//                ?.forEachIndexed { index, shopModel ->
-//                    homeShopWithHolder {
-//                        id("shop $index")
-//                        shopModel(shopModel)
-//                    }
-//                }
-//        }
-//        shopsViewModel.nearbyShopData.observe(viewLifecycleOwner, Observer {
-//            it?.let {
-//                handleLoadingRefresh(it)
-//                when (it) {
-//                    is Result.Success -> {
-//                        epoxyNearby.requestModelBuild()
-//
-//                    }
-//                    is Result.Error -> {
-//                        toast(it.exception?.message!!)
-//                        val action = HomeShopsFragmentDirections.networkError(this)
-//                        findNavController().navigate(action)
-//                    }
-//                    else -> {
-//
-//                    }
-//                }
-//            }
-//        })
-//        initRefreshScreen(R.id.srl_home_shops)
-  //  }
-
-//    override fun tryAgain(v: View) {
-//        shopsViewModel.refresh()
-//        findNavController().popBackStack()
-//    }
-//
-//    override fun updateScreen() {
-//        super.updateScreen()
-//        shopsViewModel.refresh()
-//    }
+    override fun updateScreen() {
+        super.updateScreen()
+        shopsViewModel.refresh()
+    }
 }
