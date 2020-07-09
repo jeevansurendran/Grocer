@@ -13,9 +13,11 @@ object ShopRepository {
 
     fun getNearbyShops(): Flow<Result<List<ShopModel>>> {
         return flow {
-            val result = shopRemoteDataSource.getNearbyShopsList()
-            emit(Result.Success(result))
-            delay(Constants.DEFAULT_REFRESH_RATE)
+            while (true) {
+                val result = shopRemoteDataSource.getNearbyShopsList()
+                emit(Result.Success(result))
+                delay(Constants.DEFAULT_REFRESH_RATE)
+            }
         }
     }
 
