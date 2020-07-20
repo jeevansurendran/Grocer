@@ -2,11 +2,11 @@ package com.silverpants.grocer.data.auth.sources
 
 import com.silverpants.grocer.data.Converters
 import com.silverpants.grocer.data.auth.Model.TokenModel
-import com.silverpants.grocer.network.ApiService
+import com.silverpants.grocer.network.RamenApiService
 import com.silverpants.grocer.network.NetworkModule
+import javax.inject.Inject
 
-object AuthRemoteDataSource {
-    private val apiService: ApiService = NetworkModule.apiService
+class AuthRemoteDataSource @Inject constructor(private val apiService: RamenApiService){
 
     suspend fun postGuestRegister(idToken: String): TokenModel {
         val data = Converters.objectMapper.createObjectNode()

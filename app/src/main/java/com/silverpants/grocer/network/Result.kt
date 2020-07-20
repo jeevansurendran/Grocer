@@ -1,4 +1,4 @@
-package com.silverpants.grocer.network.coflow
+package com.silverpants.grocer.network
 
 /**
  * the [Result] class is responsible for containing the data fetched from a source and
@@ -13,8 +13,12 @@ sealed class Result<out T>(
     val data: T? = null,
     val exception: Exception? = null
 ) {
-    class Success<T>(data: T?) : Result<T>(Status.SUCCESS, data)
-    class Loading : Result<Nothing>(Status.LOADING)
-    class Error(exception: Exception) : Result<Nothing>(Status.ERROR, null, exception)
+    class Success<T>(data: T?) : Result<T>(
+        Status.SUCCESS, data)
+    class Loading : Result<Nothing>(
+        Status.LOADING
+    )
+    class Error(exception: Exception) : Result<Nothing>(
+        Status.ERROR, null, exception)
 
 }

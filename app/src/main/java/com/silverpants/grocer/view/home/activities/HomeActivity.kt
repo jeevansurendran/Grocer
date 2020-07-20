@@ -7,7 +7,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.silverpants.grocer.R
 import com.silverpants.grocer.databinding.ActivityHomeBinding
 import com.silverpants.grocer.misc.base.BaseActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeActivity : BaseActivity() {
 
     private lateinit var binding: ActivityHomeBinding

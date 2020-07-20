@@ -1,14 +1,13 @@
 package com.silverpants.grocer.network
 
-import com.silverpants.grocer.data.auth.Model.TokenModel
-import com.silverpants.grocer.domain.auth.RefreshTokenUseCase
-import com.silverpants.grocer.network.coflow.Result
+import com.silverpants.grocer.data.Converters
+import dagger.Lazy
 import kotlinx.coroutines.runBlocking
 import okhttp3.Authenticator
 import okhttp3.Request
 import okhttp3.Response
 import okhttp3.Route
-import timber.log.Timber
+import javax.inject.Inject
 
 /**
  * Authenticator that attempts to refresh the client's access token.
@@ -19,32 +18,29 @@ import timber.log.Timber
  *
  * this is not gonna remain after i integrate dagger
  */
-class AccessTokenAuthenticator(
-) : Authenticator {
+class AccessTokenAuthenticator @Inject constructor(private val serviceWrapper: Lazy<RamenApiService>) :
+    Authenticator {
 
     override fun authenticate(route: Route?, response: Response): Request? {
         // We need to have a token in order to refresh it.
         val token = NetworkModule.token
-        Timber.d("hello");
-        if (token == null || response.request().header("Authorization") == null) {
-            return null;
+        if (token == null || response.request.header("Authorization") == null) {
+            return null
         }
 
         val newToken = runBlocking {
-            val refreshToken = RefreshTokenUseCase()
-            when(val refreshTokenResult = refreshToken(token.refreshToken)) {
-                is Result.Success -> {
-                    refreshTokenResult .data
-                }
-                else -> {
-                    return@runBlocking null
-                }
+            val data = Converters.objectMapper.createObjectNode()
+            data.put("refreshToken", token.refreshToken)
+            try {
+                serviceWrapper.get().postRefreshToken(data)
+            } catch (e: Exception) {
+                null
             }
         } ?: return null
         NetworkModule.token = newToken
 
         // Retry the request with the new token.
-        return response.request()
+        return response.request
             .newBuilder()
             .removeHeader("Authorization")
             .addHeader("Authorization", "Bearer ${newToken.accessToken}")

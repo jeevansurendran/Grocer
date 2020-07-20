@@ -6,5 +6,5 @@ import java.util.*
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class UserModel(
     val uid: String,
-    val createdDate: Date
+    val createdAt: Date
 )

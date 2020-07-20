@@ -1,9 +1,9 @@
 package com.silverpants.grocer.view.home
 
-import com.silverpants.grocer.network.NetworkModule
+import com.silverpants.grocer.network.RamenApiService
+import javax.inject.Inject
 
-object HomeRepository {
-    val webApiService = NetworkModule.apiService
+class HomeRepository @Inject constructor(private val webApiService: RamenApiService) {
 
     suspend fun getUserDetails() = webApiService.getUserDetails()
 

@@ -1,43 +1,75 @@
 package com.silverpants.grocer.network
 
-import com.google.firebase.auth.FirebaseAuth
 import com.silverpants.grocer.BuildConfig
 import com.silverpants.grocer.data.Converters
 import com.silverpants.grocer.data.auth.Model.TokenModel
 import com.silverpants.grocer.misc.Constants
-import com.silverpants.grocer.network.legacy.LiveDataCallAdapterFactory
+import dagger.Lazy
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
+import okhttp3.Authenticator
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
-import timber.log.Timber
+import javax.inject.Singleton
 
-
+@Module
+@InstallIn(ApplicationComponent::class)
 object NetworkModule {
     var token: TokenModel? = null
 
-    private fun provideClient(): OkHttpClient {
+    @Singleton
+    @Provides
+    fun provideAuthInterceptor(): Interceptor {
+        return AccessTokenInterceptor()
+    }
+
+    @Singleton
+    @Provides
+    fun provideAuthAuthenticator(lazyWrapper: Lazy<RamenApiService>): Authenticator {
+        return AccessTokenAuthenticator(lazyWrapper)
+    }
+
+
+    @Singleton
+    @Provides
+    fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
+        return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+    }
+
+    @Provides
+    fun provideClient(
+        authInterceptor: Interceptor,
+        authenticator: Authenticator,
+        httpLoggingInterceptor: HttpLoggingInterceptor
+    ): OkHttpClient {
         val httpClientBuilder = OkHttpClient.Builder()
 
-        //this adds authorization header with token has token id cause that's the safest fucking shit
-        httpClientBuilder.addInterceptor(AccessTokenInterceptor())
-        httpClientBuilder.authenticator(AccessTokenAuthenticator())
+        //Debugging
+        httpClientBuilder.addInterceptor(authInterceptor)
+        httpClientBuilder.authenticator(authenticator)
+
+        //Logging
         if (BuildConfig.DEBUG) {
-            val loggingInterceptor = HttpLoggingInterceptor { Timber.i(it) }
-            loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-            httpClientBuilder.addInterceptor(loggingInterceptor)
+            httpClientBuilder.addInterceptor(httpLoggingInterceptor)
         }
         return httpClientBuilder.build()
     }
 
-    private val retrofitInstance = Retrofit.Builder().apply {
-        client(provideClient())
+    @Singleton
+    @Provides
+    fun provideRetrofit(client: OkHttpClient): Retrofit = Retrofit.Builder().apply {
+        client(client)
         baseUrl(Constants.baseUrl)
         addConverterFactory(JacksonConverterFactory.create(Converters.objectMapper))
-        addCallAdapterFactory(LiveDataCallAdapterFactory())
     }.build()
 
-    val apiService: ApiService = retrofitInstance.create(
-        ApiService::class.java
-    )
+    @Singleton
+    @Provides
+    fun provideApiService(retrofit: Retrofit): RamenApiService =
+        retrofit.create(RamenApiService::class.java)
 }

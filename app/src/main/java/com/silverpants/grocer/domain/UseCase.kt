@@ -1,6 +1,6 @@
 package com.silverpants.grocer.domain
 
-import com.silverpants.grocer.network.coflow.Result
+import com.silverpants.grocer.network.Result
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import timber.log.Timber

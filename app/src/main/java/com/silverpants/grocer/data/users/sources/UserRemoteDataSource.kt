@@ -1,8 +1,8 @@
 package com.silverpants.grocer.data.users.sources
 
-import com.silverpants.grocer.network.NetworkModule
-import com.silverpants.grocer.network.ApiService
+import com.silverpants.grocer.network.RamenApiService
+import javax.inject.Inject
 
-object UserRemoteDataSource {
-    private val apiService: ApiService = NetworkModule.apiService
+class UserRemoteDataSource @Inject constructor(private val apiService: RamenApiService) {
+    
 }

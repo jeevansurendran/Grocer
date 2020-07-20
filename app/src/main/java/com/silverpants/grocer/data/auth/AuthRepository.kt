@@ -2,9 +2,9 @@ package com.silverpants.grocer.data.auth
 
 import com.silverpants.grocer.data.auth.Model.TokenModel
 import com.silverpants.grocer.data.auth.sources.AuthRemoteDataSource
+import javax.inject.Inject
 
-object AuthRepository {
-    private val authRemoteDataSource = AuthRemoteDataSource
+class AuthRepository @Inject constructor(private val authRemoteDataSource:AuthRemoteDataSource){
 
     suspend fun postGuestRegister(idToken: String): TokenModel {
         return authRemoteDataSource.postGuestRegister(idToken)

@@ -1,4 +1,4 @@
-package com.silverpants.grocer.network.coflow
+package com.silverpants.grocer.network
 
 /**
  * The [Status] enum specifies the differenct cases a [Result] can be present

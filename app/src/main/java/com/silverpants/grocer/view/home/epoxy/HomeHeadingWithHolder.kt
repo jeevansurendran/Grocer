@@ -12,7 +12,6 @@ abstract class HomeHeadingWithHolder : BaseEpoxyModelWithHolder<ItemHomeHeadingB
     @EpoxyAttribute
     internal lateinit var heading:String
 
-
     override fun ItemHomeHeadingBinding.bind() {
         tvShopHeading.text = heading
     }

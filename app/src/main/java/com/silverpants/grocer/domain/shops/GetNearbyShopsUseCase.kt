@@ -2,14 +2,18 @@ package com.silverpants.grocer.domain.shops
 
 import com.silverpants.grocer.data.shops.ShopRepository
 import com.silverpants.grocer.data.shops.models.ShopModel
+import com.silverpants.grocer.di.DefaultDispatcher
 import com.silverpants.grocer.domain.FlowUseCase
+import com.silverpants.grocer.network.Result
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
-import com.silverpants.grocer.network.coflow.Result;
+import javax.inject.Inject
 
-class GetNearbyShopsUseCase(coroutineDispatcher: CoroutineDispatcher) :
+class GetNearbyShopsUseCase @Inject constructor(
+    private val repository: ShopRepository,
+    @DefaultDispatcher coroutineDispatcher: CoroutineDispatcher
+) :
     FlowUseCase<Unit, List<ShopModel>>(coroutineDispatcher) {
-    private val repository: ShopRepository = ShopRepository
     override fun execute(parameters: Unit): Flow<Result<List<ShopModel>>> {
         return repository.getNearbyShops()
     }

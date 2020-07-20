@@ -4,7 +4,7 @@ import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.silverpants.grocer.network.coflow.Result
+import com.silverpants.grocer.network.Result
 
 abstract class BaseFragment(@LayoutRes res: Int) : Fragment(res) {
 
@@ -14,6 +14,7 @@ abstract class BaseFragment(@LayoutRes res: Int) : Fragment(res) {
         swipeRefreshLayout = it.findViewById(viewId)
         swipeRefreshLayout?.setOnRefreshListener { this.updateScreen() }
     }
+
     open fun updateScreen() {
         (activity as? BaseActivity)?.updateScreen()
     }

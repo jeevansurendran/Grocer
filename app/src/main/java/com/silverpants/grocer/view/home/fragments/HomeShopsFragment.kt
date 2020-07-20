@@ -13,8 +13,9 @@ import com.silverpants.grocer.view.home.epoxy.homeShopWithHolder
 import com.silverpants.grocer.view.home.viewmodels.ShopsViewModel
 import com.silverpants.grocer.misc.base.BaseFragment
 import com.silverpants.grocer.misc.toast
-import com.silverpants.grocer.network.coflow.Result
+import com.silverpants.grocer.network.Result
 import com.silverpants.grocer.network.fragments.NetworkErrorFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 
 /**
@@ -22,6 +23,7 @@ import com.silverpants.grocer.network.fragments.NetworkErrorFragment
  * Use the [HomeShopsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+@AndroidEntryPoint
 class HomeShopsFragment : BaseFragment(R.layout.fragment_home_shops),
     NetworkErrorFragment.TryAgainListener {
 

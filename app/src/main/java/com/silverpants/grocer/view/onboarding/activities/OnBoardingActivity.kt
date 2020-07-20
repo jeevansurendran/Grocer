@@ -7,9 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.silverpants.grocer.R
 import com.silverpants.grocer.misc.toast
-import com.silverpants.grocer.network.coflow.Result
+import com.silverpants.grocer.network.Result
 import com.silverpants.grocer.view.home.activities.HomeActivity
 import com.silverpants.grocer.view.onboarding.viewmodels.OnBoardingViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
 /**
@@ -18,6 +19,7 @@ import timber.log.Timber
  * @author @jeevansurendran
  * @since 1.0
  */
+@AndroidEntryPoint
 class OnBoardingActivity : AppCompatActivity() {
     val viewModel: OnBoardingViewModel by viewModels()
 
