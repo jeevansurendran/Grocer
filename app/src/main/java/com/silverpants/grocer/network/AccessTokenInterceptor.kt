@@ -1,11 +1,9 @@
 package com.silverpants.grocer.network
 
-import com.silverpants.grocer.data.auth.Model.TokenModel
 import okhttp3.Interceptor
 import okhttp3.Response
 
-class AccessTokenInterceptor(
-) : Interceptor {
+class AccessTokenInterceptor : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val accessToken = NetworkModule.token?.accessToken

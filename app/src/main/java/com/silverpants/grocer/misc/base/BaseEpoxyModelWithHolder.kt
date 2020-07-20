@@ -38,7 +38,6 @@ private fun getBindMethodFrom(javaClass: Class<*>): Method =
         val actualTypeOfThis = getSuperclassParameterizedType(javaClass)
         val viewBindingClass = actualTypeOfThis.actualTypeArguments[0] as Class<ViewBinding>
         viewBindingClass.getDeclaredMethod("bind", View::class.java)
-            ?: error("The binder class ${javaClass.canonicalName} should have a method bind(View)")
     }
 
 private fun getSuperclassParameterizedType(klass: Class<*>): ParameterizedType {

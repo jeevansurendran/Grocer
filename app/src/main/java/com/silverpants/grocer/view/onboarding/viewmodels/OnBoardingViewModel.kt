@@ -12,6 +12,6 @@ class OnBoardingViewModel @ViewModelInject constructor(val processAuth : Process
 
     val authResultLiveData: LiveData<Result<String>> = liveData {
         emit(Result.Loading())
-        emit(processAuth(Unit));
+        emit(processAuth(Unit))
     }
 }
