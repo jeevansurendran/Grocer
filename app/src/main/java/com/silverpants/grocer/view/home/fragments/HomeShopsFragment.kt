@@ -8,13 +8,13 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.silverpants.grocer.R
 import com.silverpants.grocer.databinding.FragmentHomeShopsBinding
-import com.silverpants.grocer.view.home.epoxy.homeHeadingWithHolder
-import com.silverpants.grocer.view.home.epoxy.homeShopWithHolder
-import com.silverpants.grocer.view.home.viewmodels.ShopsViewModel
-import com.silverpants.grocer.misc.base.BaseFragment
+import com.silverpants.grocer.misc.base.RefreshableFragment
 import com.silverpants.grocer.misc.toast
 import com.silverpants.grocer.network.Result
 import com.silverpants.grocer.network.fragments.NetworkErrorFragment
+import com.silverpants.grocer.view.home.epoxy.homeHeadingWithHolder
+import com.silverpants.grocer.view.home.epoxy.homeShopWithHolder
+import com.silverpants.grocer.view.home.viewmodels.ShopsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -24,7 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
  * create an instance of this fragment.
  */
 @AndroidEntryPoint
-class HomeShopsFragment : BaseFragment(R.layout.fragment_home_shops),
+class HomeShopsFragment : RefreshableFragment(R.layout.fragment_home_shops),
     NetworkErrorFragment.TryAgainListener {
 
     private val shopsViewModel: ShopsViewModel by activityViewModels()

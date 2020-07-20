@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.silverpants.grocer.network.Result
 
-abstract class BaseFragment(@LayoutRes res: Int) : Fragment(res) {
+abstract class RefreshableFragment(@LayoutRes res: Int) : Fragment(res) {
 
     private var swipeRefreshLayout: SwipeRefreshLayout? = null
 
@@ -16,7 +16,7 @@ abstract class BaseFragment(@LayoutRes res: Int) : Fragment(res) {
     }
 
     open fun updateScreen() {
-        (activity as? BaseActivity)?.updateScreen()
+        (activity as? RefreshableActivity)?.updateScreen()
     }
 
     protected fun startRefreshing() {

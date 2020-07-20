@@ -6,7 +6,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.navArgs
 import com.silverpants.grocer.R
 import com.silverpants.grocer.databinding.FragmentNetworkErrorBinding
-import com.silverpants.grocer.misc.base.BaseFragment
+import com.silverpants.grocer.misc.base.RefreshableFragment
 import java.io.Serializable
 
 
@@ -17,7 +17,7 @@ import java.io.Serializable
  * @since 1.0
  */
 class NetworkErrorFragment :
-    BaseFragment(R.layout.fragment_network_error) {
+    RefreshableFragment(R.layout.fragment_network_error) {
 
     private val args: NetworkErrorFragmentArgs by navArgs()
 
