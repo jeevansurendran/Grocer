@@ -7,7 +7,7 @@
 
     <TextView
         android:id="@+id/tv_order_details_text"
-        style="@style/HeadingLargeTextStyle"
+        style="@style/HeadingTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_very_tiny"
@@ -20,7 +20,6 @@
         android:id="@+id/tv_order_details_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_very_tiny"
         android:layout_marginBottom="@dimen/spacing_very_tiny"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

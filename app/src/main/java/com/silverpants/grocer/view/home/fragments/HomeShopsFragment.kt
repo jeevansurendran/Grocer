@@ -14,6 +14,7 @@ import com.silverpants.grocer.network.Result
 import com.silverpants.grocer.network.fragments.NetworkErrorFragment
 import com.silverpants.grocer.view.home.epoxy.homeHeadingWithHolder
 import com.silverpants.grocer.view.home.epoxy.homeShopWithHolder
+import com.silverpants.grocer.view.home.listeners.CreateOrderListener
 import com.silverpants.grocer.view.home.viewmodels.ShopsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,7 +26,7 @@ import dagger.hilt.android.AndroidEntryPoint
  */
 @AndroidEntryPoint
 class HomeShopsFragment : RefreshableFragment(R.layout.fragment_home_shops),
-    NetworkErrorFragment.TryAgainListener {
+    NetworkErrorFragment.TryAgainListener, CreateOrderListener {
 
     private val shopsViewModel: ShopsViewModel by activityViewModels()
 
@@ -43,6 +44,7 @@ class HomeShopsFragment : RefreshableFragment(R.layout.fragment_home_shops),
                     homeShopWithHolder {
                         id("shop $index")
                         shopModel(shopModel)
+                        createOrderListener(this@HomeShopsFragment)
                     }
                 }
         }
@@ -76,5 +78,10 @@ class HomeShopsFragment : RefreshableFragment(R.layout.fragment_home_shops),
     override fun updateScreen() {
         super.updateScreen()
         shopsViewModel.refresh()
+    }
+
+    override fun createOrder(shopId: String) {
+        val action = HomeShopsFragmentDirections.createOrder(shopId)
+        findNavController().navigate(action)
     }
 }

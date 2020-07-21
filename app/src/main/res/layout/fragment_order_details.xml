@@ -3,14 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/spacing_small">
-    <?xml version="1.0" encoding="utf-8"?>
+    android:layout_height="match_parent">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cv_order_shop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_small"
         android:layout_marginTop="@dimen/spacing_tiny"
         app:cardCornerRadius="@dimen/card_radius_normal"
         app:cardElevation="0dp"
@@ -75,6 +74,7 @@
         android:id="@+id/epoxy_order_details"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:padding="@dimen/spacing_small"
         android:layout_marginTop="@dimen/spacing_small"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

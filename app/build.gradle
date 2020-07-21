@@ -98,6 +98,11 @@ dependencies {
     implementation "com.airbnb.android:epoxy:$versions.epoxy"
     kapt "com.airbnb.android:epoxy-processor:$versions.epoxy"
 
+    dependencies {
+        implementation "com.github.bumptech.glide:glide:$versions.glide"
+        kapt "com.github.bumptech.glide:compiler:$versions.glide"
+    }
+
     implementation 'com.google.firebase:firebase-auth:19.3.2'
     implementation 'com.google.firebase:firebase-core:17.4.4'
     testImplementation 'junit:junit:4.13'

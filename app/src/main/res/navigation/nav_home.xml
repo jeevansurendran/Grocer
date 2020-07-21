@@ -9,17 +9,20 @@
         android:id="@+id/homeShopsFragment"
         android:name="com.silverpants.grocer.view.home.fragments.HomeShopsFragment"
         android:label="fragment_home_shops"
-        tools:layout="@layout/fragment_home_shops" >
+        tools:layout="@layout/fragment_home_shops">
         <action
             android:id="@+id/networkError"
             app:destination="@id/networkErrorFragment"
             app:launchSingleTop="false" />
+        <action
+            android:id="@+id/createOrder"
+            app:destination="@id/orderActivity" />
     </fragment>
     <fragment
         android:id="@+id/homeOrdersFragment"
         android:name="com.silverpants.grocer.view.home.fragments.HomeOrdersFragment"
         android:label="fragment_home_orders"
-        tools:layout="@layout/fragment_home_orders" >
+        tools:layout="@layout/fragment_home_orders">
         <action
             android:id="@+id/networkError"
             app:destination="@id/networkErrorFragment" />
@@ -28,7 +31,7 @@
         android:id="@+id/homeListsFragment"
         android:name="com.silverpants.grocer.view.home.fragments.HomeListsFragment"
         android:label="fragment_home_lists"
-        tools:layout="@layout/fragment_home_lists" >
+        tools:layout="@layout/fragment_home_lists">
         <action
             android:id="@+id/networkError"
             app:destination="@id/networkErrorFragment" />
@@ -37,7 +40,7 @@
         android:id="@+id/homeProfileFragment"
         android:name="com.silverpants.grocer.view.home.fragments.HomeProfileFragment"
         android:label="fragment_home_profile"
-        tools:layout="@layout/fragment_home_profile" >
+        tools:layout="@layout/fragment_home_profile">
         <action
             android:id="@+id/networkError"
             app:destination="@id/networkErrorFragment" />
@@ -46,9 +49,18 @@
         android:id="@+id/networkErrorFragment"
         android:name="com.silverpants.grocer.network.fragments.NetworkErrorFragment"
         android:label="fragment_network_error"
-        tools:layout="@layout/fragment_network_error" >
+        tools:layout="@layout/fragment_network_error">
         <argument
             android:name="tryAgainListener"
             app:argType="com.silverpants.grocer.network.fragments.NetworkErrorFragment$TryAgainListener" />
     </fragment>
+    <activity
+        android:id="@+id/orderActivity"
+        android:name="com.silverpants.grocer.view.order.activities.OrderActivity"
+        android:label="OrderActivity"
+        tools:layout="@layout/activity_order">
+        <argument
+            android:name="shopId"
+            app:argType="string" />
+    </activity>
 </navigation>

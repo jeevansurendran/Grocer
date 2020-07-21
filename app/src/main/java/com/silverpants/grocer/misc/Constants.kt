@@ -10,7 +10,7 @@ object Constants {
 
     //Networking
     private const val API_PROTOCOL = "http://"
-    private const val API_HOST = "10.0.2.2"
+    private const val API_HOST = "192.168.1.7"
     private const val API_PORT = "5000"
 
     const val baseUrl = "$API_PROTOCOL$API_HOST:$API_PORT/"
