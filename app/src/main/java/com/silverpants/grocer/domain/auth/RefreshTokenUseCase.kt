@@ -1,7 +1,7 @@
 package com.silverpants.grocer.domain.auth
 
 import com.silverpants.grocer.data.auth.AuthRepository
-import com.silverpants.grocer.data.auth.Model.TokenModel
+import com.silverpants.grocer.data.auth.models.TokenModel
 import com.silverpants.grocer.di.DefaultDispatcher
 import com.silverpants.grocer.domain.UseCase
 import kotlinx.coroutines.CoroutineDispatcher

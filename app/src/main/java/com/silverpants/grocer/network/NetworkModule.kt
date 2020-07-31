@@ -2,7 +2,7 @@ package com.silverpants.grocer.network
 
 import com.silverpants.grocer.BuildConfig
 import com.silverpants.grocer.data.Converters
-import com.silverpants.grocer.data.auth.Model.TokenModel
+import com.silverpants.grocer.data.auth.models.TokenModel
 import com.silverpants.grocer.misc.Constants
 import dagger.Lazy
 import dagger.Module

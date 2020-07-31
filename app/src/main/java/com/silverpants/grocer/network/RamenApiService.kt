@@ -1,7 +1,7 @@
 package com.silverpants.grocer.network
 
 import com.fasterxml.jackson.databind.node.ObjectNode
-import com.silverpants.grocer.data.auth.Model.TokenModel
+import com.silverpants.grocer.data.auth.models.TokenModel
 import com.silverpants.grocer.data.shops.models.ShopModel
 import com.silverpants.grocer.data.users.models.UserModel
 import retrofit2.http.Body

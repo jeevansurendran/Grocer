@@ -47,7 +47,7 @@ class OrderDetailsFragment : RefreshableFragment(R.layout.fragment_order_details
             }
             orderHeadingWithHolder {
                 id("heading3")
-                heading("Expected Delivery")
+                heading("Amount to be paid")
             }
             orderDescriptionWithHolder {
                 id("bruh2")
@@ -55,7 +55,7 @@ class OrderDetailsFragment : RefreshableFragment(R.layout.fragment_order_details
             }
             orderHeadingWithHolder {
                 id("heading4")
-                heading("Expected Delivery")
+                heading("Mode of Payment")
             }
             orderDescriptionWithHolder {
                 id("bruh3")

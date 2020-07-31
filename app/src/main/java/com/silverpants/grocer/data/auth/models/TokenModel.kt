@@ -1,4 +1,4 @@
-package com.silverpants.grocer.data.auth.Model
+package com.silverpants.grocer.data.auth.models
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 

@@ -30,5 +30,6 @@ ext.versions = [
         koin              : '2.1.0-alpha-8',
         navigation        : '2.3.0',
         room              : '2.2.5',
-        hilt              : '2.28.3-alpha'
+        hilt              : '2.28.3-alpha',
+        camerax          :  '1.0.0-beta06'
 ]

@@ -1,6 +1,6 @@
 package com.silverpants.grocer.data.auth
 
-import com.silverpants.grocer.data.auth.Model.TokenModel
+import com.silverpants.grocer.data.auth.models.TokenModel
 import com.silverpants.grocer.data.auth.sources.AuthRemoteDataSource
 import javax.inject.Inject
 
