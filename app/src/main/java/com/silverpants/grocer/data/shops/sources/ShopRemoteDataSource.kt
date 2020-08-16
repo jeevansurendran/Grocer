@@ -1,7 +1,7 @@
 package com.silverpants.grocer.data.shops.sources
 
 import com.silverpants.grocer.data.shops.models.ShopModel
-import com.silverpants.grocer.network.RamenApiService
+import com.silverpants.grocer.hardware.network.RamenApiService
 import javax.inject.Inject
 
 

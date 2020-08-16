@@ -1,4 +1,4 @@
-package com.silverpants.grocer.network.fragments
+package com.silverpants.grocer.view.home.fragments
 
 import android.os.Bundle
 import android.view.View
@@ -27,10 +27,6 @@ class NetworkErrorFragment :
                 requireActivity().finish()
             }
         }
-
-    interface TryAgainListener : Serializable {
-        fun tryAgain(v: View)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val binding = FragmentNetworkErrorBinding.bind(view)

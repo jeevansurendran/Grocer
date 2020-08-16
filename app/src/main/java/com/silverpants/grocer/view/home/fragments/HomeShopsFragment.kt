@@ -10,11 +10,11 @@ import com.silverpants.grocer.R
 import com.silverpants.grocer.databinding.FragmentHomeShopsBinding
 import com.silverpants.grocer.misc.base.RefreshableFragment
 import com.silverpants.grocer.misc.toast
-import com.silverpants.grocer.network.Result
-import com.silverpants.grocer.network.fragments.NetworkErrorFragment
+import com.silverpants.grocer.hardware.network.Result
 import com.silverpants.grocer.view.home.epoxy.homeHeadingWithHolder
 import com.silverpants.grocer.view.home.epoxy.homeShopWithHolder
 import com.silverpants.grocer.view.home.listeners.CreateOrderListener
+import com.silverpants.grocer.view.home.listeners.TryAgainListener
 import com.silverpants.grocer.view.home.viewmodels.ShopsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,7 +26,7 @@ import dagger.hilt.android.AndroidEntryPoint
  */
 @AndroidEntryPoint
 class HomeShopsFragment : RefreshableFragment(R.layout.fragment_home_shops),
-    NetworkErrorFragment.TryAgainListener, CreateOrderListener {
+    TryAgainListener, CreateOrderListener {
 
     private val shopsViewModel: ShopsViewModel by activityViewModels()
 

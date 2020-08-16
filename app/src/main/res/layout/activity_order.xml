@@ -20,8 +20,9 @@
                 android:id="@+id/im_order_toolbar_back"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:paddingRight="@dimen/spacing_small"
-                android:src="@drawable/xml_arrow_back_green" />
+                android:paddingEnd="@dimen/spacing_small"
+                android:src="@drawable/xml_arrow_back_green"
+                tools:ignore="RtlSymmetry" />
 
             <TextView
                 android:id="@+id/tv_order_toolbar_text"

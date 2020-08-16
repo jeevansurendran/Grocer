@@ -7,7 +7,7 @@
     <dimen name="font_normal">17sp</dimen>
     <dimen name="font_large">20sp</dimen>
     <dimen name="font_extra_large">22sp</dimen>
-    <dimen name="font_huge">24sp</dimen>
+    <dimen name="font_huge">34sp</dimen>
     <dimen name="font_extra_huge">40sp</dimen>
 
     <!-- Spacing between two views -->

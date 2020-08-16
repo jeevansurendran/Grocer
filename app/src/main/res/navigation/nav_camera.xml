@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_camera"
+    app:startDestination="@id/cameraPermissionsFragment">
+
+    <fragment
+        tools:layout="@layout/fragment_camera_preview"
+        android:id="@+id/cameraPreviewFragment"
+        android:name="com.silverpants.grocer.view.camera.fragments.CameraPreviewFragment"
+        android:label="CameraPreviewFragment" >
+
+        <action
+            android:id="@+id/show_image"
+            app:destination="@id/cameraCaptureFragment" />
+        <action
+            android:id="@+id/ask_permission"
+            app:popUpTo="@id/cameraPreviewFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/cameraPermissionsFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_camera_capture"
+        android:id="@+id/cameraCaptureFragment"
+        android:name="com.silverpants.grocer.view.camera.fragments.CameraCaptureFragment"
+        android:label="CameraCaptureFragment">
+        <action
+            android:id="@+id/show_pictures"
+            app:destination="@id/cameraGalleryFragment" />
+        <action
+            android:id="@+id/add_more_picture"
+            app:popUpTo="@id/cameraPreviewFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/cameraPreviewFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_camera_permissions"
+        android:id="@+id/cameraPermissionsFragment"
+        android:name="com.silverpants.grocer.view.camera.fragments.CameraPermissionsFragment"
+        android:label="CameraPermissionsFragment" >
+        <action
+            android:id="@+id/start_camera"
+            app:popUpTo="@id/cameraPermissionsFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/cameraPreviewFragment"
+            app:launchSingleTop="true" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_camera_gallery"
+        android:id="@+id/cameraGalleryFragment"
+        android:name="com.silverpants.grocer.view.camera.fragments.CameraGalleryFragment"
+        android:label="CameraGalleryFragment" >
+        <argument
+            android:name="default"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+</navigation>

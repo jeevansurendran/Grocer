@@ -4,7 +4,7 @@ import com.silverpants.grocer.data.shops.ShopRepository
 import com.silverpants.grocer.data.shops.models.ShopModel
 import com.silverpants.grocer.di.DefaultDispatcher
 import com.silverpants.grocer.domain.FlowUseCase
-import com.silverpants.grocer.network.Result
+import com.silverpants.grocer.hardware.network.Result
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

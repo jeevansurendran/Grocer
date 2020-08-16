@@ -1,4 +1,4 @@
-package com.silverpants.grocer.network
+package com.silverpants.grocer.hardware.network
 
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.silverpants.grocer.data.auth.models.TokenModel
@@ -15,13 +15,13 @@ interface RamenApiService {
     suspend fun postGuestRegister(@Body userCredentials: ObjectNode): TokenModel
 
     @POST("/auth/guests/login")
-    suspend fun postGuestLogin(@Body userCredentials: ObjectNode) : TokenModel
+    suspend fun postGuestLogin(@Body userCredentials: ObjectNode): TokenModel
 
     @POST("/auth/token")
-    suspend fun postRefreshToken(@Body refreshToken : ObjectNode) : TokenModel
+    suspend fun postRefreshToken(@Body refreshToken: ObjectNode): TokenModel
 
     @POST("/auth/logout")
-    suspend fun  postLogout(@Body refreshToken: ObjectNode)
+    suspend fun postLogout(@Body refreshToken: ObjectNode)
 
     /* Users */
     @GET("/users/me")

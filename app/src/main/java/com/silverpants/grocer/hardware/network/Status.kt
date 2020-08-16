@@ -1,4 +1,4 @@
-package com.silverpants.grocer.network
+package com.silverpants.grocer.hardware.network
 
 /**
  * The [Status] enum specifies the differenct cases a [Result] can be present
