@@ -97,6 +97,7 @@ dependencies {
 
     //Epoxy
     implementation "com.airbnb.android:epoxy:$versions.epoxy"
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
     kapt "com.airbnb.android:epoxy-processor:$versions.epoxy"
 
     // Glide

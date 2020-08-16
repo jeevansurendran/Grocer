@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.silverpants.grocer.R
 import com.silverpants.grocer.misc.toast
-import com.silverpants.grocer.network.Result
+import com.silverpants.grocer.hardware.network.Result
 import com.silverpants.grocer.view.home.activities.HomeActivity
 import com.silverpants.grocer.view.onboarding.viewmodels.OnBoardingViewModel
 import dagger.hilt.android.AndroidEntryPoint

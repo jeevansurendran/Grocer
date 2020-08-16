@@ -4,7 +4,7 @@ import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.silverpants.grocer.network.Result
+import com.silverpants.grocer.hardware.network.Result
 
 abstract class RefreshableFragment(@LayoutRes res: Int) : Fragment(res) {
 

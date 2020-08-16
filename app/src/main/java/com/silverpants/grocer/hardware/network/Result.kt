@@ -1,4 +1,4 @@
-package com.silverpants.grocer.network
+package com.silverpants.grocer.hardware.network
 
 /**
  * the [Result] class is responsible for containing the data fetched from a source and

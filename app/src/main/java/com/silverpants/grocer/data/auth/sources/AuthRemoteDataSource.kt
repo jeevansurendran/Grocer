@@ -2,7 +2,7 @@ package com.silverpants.grocer.data.auth.sources
 
 import com.silverpants.grocer.data.Converters
 import com.silverpants.grocer.data.auth.models.TokenModel
-import com.silverpants.grocer.network.RamenApiService
+import com.silverpants.grocer.hardware.network.RamenApiService
 import javax.inject.Inject
 
 class AuthRemoteDataSource @Inject constructor(private val apiService: RamenApiService){

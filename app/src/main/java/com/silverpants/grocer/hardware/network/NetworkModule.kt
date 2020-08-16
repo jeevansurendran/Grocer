@@ -1,4 +1,4 @@
-package com.silverpants.grocer.network
+package com.silverpants.grocer.hardware.network
 
 import com.silverpants.grocer.BuildConfig
 import com.silverpants.grocer.data.Converters

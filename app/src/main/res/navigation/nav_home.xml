@@ -47,12 +47,12 @@
     </fragment>
     <fragment
         android:id="@+id/networkErrorFragment"
-        android:name="com.silverpants.grocer.network.fragments.NetworkErrorFragment"
+        android:name="com.silverpants.grocer.view.home.fragments.NetworkErrorFragment"
         android:label="fragment_network_error"
         tools:layout="@layout/fragment_network_error">
         <argument
             android:name="tryAgainListener"
-            app:argType="com.silverpants.grocer.network.fragments.NetworkErrorFragment$TryAgainListener" />
+            app:argType="com.silverpants.grocer.view.home.listeners.TryAgainListener" />
     </fragment>
     <activity
         android:id="@+id/orderActivity"

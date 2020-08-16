@@ -1,24 +1,14 @@
 package com.silverpants.grocer.domain
 
-import com.silverpants.grocer.network.Result
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.withContext
+import com.silverpants.grocer.hardware.network.Result
 import timber.log.Timber
 
-/**
- * the [UseCase] executes the business logic for a particular use case.
- *
- * @author @jeevansurendran
- * @since 1.0
- */
-abstract class UseCase<in P, R>(private val coroutineDispatcher: CoroutineDispatcher) {
+abstract class UseCase<in P, R> {
 
-    suspend operator fun invoke(parameters: P): Result<R> {
+    operator fun invoke(parameters: P): Result<R> {
         return try {
-            withContext(coroutineDispatcher) {
-                execute(parameters).let {
-                    Result.Success<R>(it)
-                }
+            execute(parameters).let {
+                Result.Success(it)
             }
         } catch (e: Exception) {
             Timber.d(e)
@@ -30,5 +20,5 @@ abstract class UseCase<in P, R>(private val coroutineDispatcher: CoroutineDispat
      * Override this to set the code to be executed.
      */
     @Throws(RuntimeException::class)
-    protected abstract suspend fun execute(parameters: P): R
+    protected abstract fun execute(parameters: P): R
 }

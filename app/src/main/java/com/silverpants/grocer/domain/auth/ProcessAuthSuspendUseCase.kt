@@ -3,19 +3,19 @@ package com.silverpants.grocer.domain.auth
 import com.google.firebase.auth.FirebaseAuth
 import com.silverpants.grocer.data.auth.AuthRepository
 import com.silverpants.grocer.di.DefaultDispatcher
-import com.silverpants.grocer.domain.UseCase
+import com.silverpants.grocer.domain.SuspendUseCase
 import com.silverpants.grocer.misc.suspendAndWait
-import com.silverpants.grocer.network.NetworkModule
+import com.silverpants.grocer.hardware.network.NetworkModule
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
-class ProcessAuthUseCase @Inject constructor(
+class ProcessAuthSuspendUseCase @Inject constructor(
     private val authRepository: AuthRepository,
     @DefaultDispatcher dispatcher: CoroutineDispatcher
 ) :
-    UseCase<Unit, String>(dispatcher) {
+    SuspendUseCase<Unit, String>(dispatcher) {
     private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
     override suspend fun execute(parameters: Unit): String {

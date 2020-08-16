@@ -7,7 +7,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.silverpants.grocer.R
 import com.silverpants.grocer.databinding.FragmentHomeProfileBinding
-import com.silverpants.grocer.network.Result
+import com.silverpants.grocer.hardware.network.Result
 import com.silverpants.grocer.view.home.viewmodels.UserDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -5,9 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import com.silverpants.grocer.data.shops.models.ShopModel
 import com.silverpants.grocer.domain.shops.GetNearbyShopsUseCase
+import com.silverpants.grocer.hardware.network.Result
 import com.silverpants.grocer.misc.base.BaseViewModel
 import com.silverpants.grocer.misc.base.SingleSourcedLiveData
-import com.silverpants.grocer.network.Result
 
 class ShopsViewModel @ViewModelInject constructor(private val nearbyShopsUseCase: GetNearbyShopsUseCase) :
     BaseViewModel() {

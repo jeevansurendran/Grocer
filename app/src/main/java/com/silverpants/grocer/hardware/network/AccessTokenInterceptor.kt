@@ -1,4 +1,4 @@
-package com.silverpants.grocer.network
+package com.silverpants.grocer.hardware.network
 
 import okhttp3.Interceptor
 import okhttp3.Response

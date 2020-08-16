@@ -4,11 +4,11 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.silverpants.grocer.domain.auth.ProcessAuthUseCase
-import com.silverpants.grocer.network.Result
+import com.silverpants.grocer.domain.auth.ProcessAuthSuspendUseCase
+import com.silverpants.grocer.hardware.network.Result
 
 
-class OnBoardingViewModel @ViewModelInject constructor(val processAuth : ProcessAuthUseCase): ViewModel() {
+class OnBoardingViewModel @ViewModelInject constructor(val processAuth : ProcessAuthSuspendUseCase): ViewModel() {
 
     val authResultLiveData: LiveData<Result<String>> = liveData {
         emit(Result.Loading())

@@ -82,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/spacing_normal"
         android:adjustViewBounds="true"
-        android:src="@drawable/xml_auth_phone_cart"
+        android:src="@drawable/xml_general_cart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@id/tv_auth_phone_steps"

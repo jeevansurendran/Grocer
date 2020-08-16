@@ -1,7 +1,8 @@
 package com.silverpants.grocer.domain
 
-import com.silverpants.grocer.network.Result
+import com.silverpants.grocer.hardware.network.Result
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
@@ -13,6 +14,7 @@ import kotlinx.coroutines.flow.flowOn
  * @since 1.0
  */
 abstract class FlowUseCase<in P, R>(private val coroutineDispatcher: CoroutineDispatcher) {
+    @ExperimentalCoroutinesApi
     operator fun invoke(parameters: P): Flow<Result<R>> = execute(parameters)
         .catch { e -> emit(Result.Error(Exception(e))) }
         .flowOn(coroutineDispatcher)
